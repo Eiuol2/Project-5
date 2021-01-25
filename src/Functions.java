@@ -1,7 +1,7 @@
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+//import java.util.Map;
+//import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,16 +18,16 @@ public final class Functions
 //    public static final int BLOB_ANIMATION_MIN = 50;
 //    public static final int BLOB_ANIMATION_MAX = 150;
 
-    public static final String ORE_ID_PREFIX = "ore -- ";
-    public static final int ORE_CORRUPT_MIN = 20000;
-    public static final int ORE_CORRUPT_MAX = 30000;
-    public static final int ORE_REACH = 1;
+//    public static final String ORE_ID_PREFIX = "ore -- ";
+//    public static final int ORE_CORRUPT_MIN = 20000;
+//    public static final int ORE_CORRUPT_MAX = 30000;
+//    public static final int ORE_REACH = 1;
 
 //    public static final String QUAKE_KEY = "quake";
     public static final String QUAKE_ID = "quake";
     public static final int QUAKE_ACTION_PERIOD = 1100;
     public static final int QUAKE_ANIMATION_PERIOD = 100;
-    public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
+//    public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
 
     public static final int COLOR_MASK = 0xffffff;
 //    public static final int KEYED_IMAGE_MIN = 5;
@@ -78,7 +78,7 @@ public final class Functions
     public static final int VEIN_ROW = 3;
     public static final int VEIN_ACTION_PERIOD = 4;
 
-
+/*
     public static PImage getCurrentImage(Object entity) {
         if (entity instanceof Background) {
             return ((Background)entity).images.get(
@@ -93,6 +93,7 @@ public final class Functions
                                   entity));
         }
     }
+    */
 /*
     public static int getAnimationPeriod(Entity entity) {
         switch (entity.getKind()) {
@@ -1121,6 +1122,7 @@ public final class Functions
         return new Entity(EntityKind.BLACKSMITH, id, position, images, 0, 0, 0,
                           0);
     }
+
 /*
     public static Entity createMinerFull(
             String id,

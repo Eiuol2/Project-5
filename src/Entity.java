@@ -68,24 +68,11 @@ public final class Entity
         return this.imageIndex;
     }
 
-    public int getresourceLimit()
-    {
-        return this.resourceLimit;
-    }
 
-    public int getresourceCount()
-    {
-        return this.resourceCount;
-    }
 
     public int getactionPeriod()
     {
         return this.actionPeriod;
-    }
-
-    public int getanimationPeriod()
-    {
-        return this.animationPeriod;
     }
 
 
@@ -425,6 +412,9 @@ public final class Entity
         }
 
         return newPos;
+    }
+    public PImage getCurrentImage() {
+        return ((this.images.get(this.imageIndex)));
     }
 
 
