@@ -6,13 +6,13 @@ import processing.core.PImage;
 public final class Entity
 {
 
-    private static final String BLOB_KEY = "blob";
-    private static final String BLOB_ID_SUFFIX = " -- blob";
-    private static final int BLOB_PERIOD_SCALE = 4;
-    private static final int BLOB_ANIMATION_MIN = 50;
-    private static final int BLOB_ANIMATION_MAX = 150;
+    private final String BLOB_KEY = "blob";
+    private final String BLOB_ID_SUFFIX = " -- blob";
+    private final int BLOB_PERIOD_SCALE = 4;
+    private final int BLOB_ANIMATION_MIN = 50;
+    private final int BLOB_ANIMATION_MAX = 150;
 
-    public static final String QUAKE_KEY = "quake";
+    private final String QUAKE_KEY = "quake";
 
 
 
