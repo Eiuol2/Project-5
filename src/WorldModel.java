@@ -12,6 +12,9 @@ public final class WorldModel
 
 
 
+    private static final int ORE_REACH = 1;
+
+
     public int getNumRows()
     {
         return this.numRows;
@@ -146,6 +149,19 @@ public final class WorldModel
         }
 
         this.addEntity(entity);
+    }
+
+    public Optional<Point> findOpenAround(Point pos) {
+        for (int dy = -ORE_REACH; dy <= ORE_REACH; dy++) {
+            for (int dx = -ORE_REACH; dx <= ORE_REACH; dx++) {
+                Point newPt = new Point(pos.x + dx, pos.y + dy);
+                if (this.withinBounds(newPt) && !this.isOccupied(newPt)) {
+                    return Optional.of(newPt);
+                }
+            }
+        }
+
+        return Optional.empty();
     }
 
 

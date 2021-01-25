@@ -454,7 +454,7 @@ public final class Functions
     }
 
  */
-
+/*
     public static boolean moveToFull(
             Entity miner,
             WorldModel world,
@@ -479,6 +479,8 @@ public final class Functions
         }
     }
 
+ */
+/*
     public static boolean moveToOreBlob(
             Entity blob,
             WorldModel world,
@@ -504,6 +506,8 @@ public final class Functions
             return false;
         }
     }
+
+ */
 /*
     public static Point nextPositionMiner(
             Entity entity, WorldModel world, Point destPos)
@@ -524,7 +528,7 @@ public final class Functions
     }
 
  */
-
+/*
     public static Point nextPositionOreBlob(
             Entity entity, WorldModel world, Point destPos)
     {
@@ -549,12 +553,14 @@ public final class Functions
 
         return newPos;
     }
+    */
 /*
     public static boolean adjacent(Point p1, Point p2) {
         return (p1.x == p2.x && Math.abs(p1.y - p2.y) == 1) || (p1.y == p2.y
                 && Math.abs(p1.x - p2.x) == 1);
     }
 */
+    /*
     public static Optional<Point> findOpenAround(WorldModel world, Point pos) {
         for (int dy = -ORE_REACH; dy <= ORE_REACH; dy++) {
             for (int dx = -ORE_REACH; dx <= ORE_REACH; dx++) {
@@ -567,6 +573,8 @@ public final class Functions
 
         return Optional.empty();
     }
+
+     */
 
     public static void scheduleEvent(
             EventScheduler scheduler,
