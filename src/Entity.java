@@ -20,7 +20,7 @@ public final class Entity
     private static final String ORE_ID_PREFIX = "ore -- ";
     private static final int ORE_CORRUPT_MIN = 20000;
     private static final int ORE_CORRUPT_MAX = 30000;
-    public static final String ORE_KEY = "ore";
+    private static final String ORE_KEY = "ore";
 
 
 
@@ -58,17 +58,6 @@ public final class Entity
         return this.position;
     }
 
-    public List<PImage> getimages()
-    {
-        return this.images;
-    }
-
-    public int getImageIndex()
-    {
-        return this.imageIndex;
-    }
-
-
 
     public int getactionPeriod()
     {
@@ -100,13 +89,6 @@ public final class Entity
     }
 
 
-    public Entity createMinerFull()
-    {
-        return new Entity(EntityKind.MINER_FULL, this.id, this.position, this.images,
-                this.resourceLimit, this.resourceLimit, this.actionPeriod,
-                this.animationPeriod);
-    }
-
     public void transformFull(
             Entity entity,
             WorldModel world,
@@ -132,7 +114,10 @@ public final class Entity
             ImageStore imageStore)
     {
         if (this.resourceCount >= this.resourceLimit) {
-            Entity miner = entity.createMinerFull();
+            Entity miner = Functions.createMinerFull(this.id, this.resourceLimit,
+                    this.position, this.actionPeriod,
+                    this.animationPeriod,
+                    this.images);
 
             world.removeEntity(entity);
             scheduler.unscheduleAllEvents(entity);

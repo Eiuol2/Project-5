@@ -7,23 +7,6 @@ public final class EventScheduler
     private final double timeScale;
 
 
-    public PriorityQueue<Event> getEventQueue()
-    {
-        return this.eventQueue;
-    }
-
-    public Map<Entity, List<Event>> getPendingEvents()
-    {
-        return this.pendingEvents;
-    }
-
-    public double getTimeScale()
-    {
-        return this.timeScale;
-    }
-
-
-
 
     public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
 

@@ -17,19 +17,9 @@ public final class ImageStore
 
 
 
-    private Map<String, List<PImage>> images;
-    private List<PImage> defaultImages;
+    private final Map<String, List<PImage>> images;
+    private final List<PImage> defaultImages;
 
-
-    public Map<String, List<PImage>> getImages()
-    {
-        return this.images;
-    }
-
-    public List<PImage> getDefaultImages()
-    {
-        return this.defaultImages;
-    }
 
 
     public ImageStore(PImage defaultImage) {

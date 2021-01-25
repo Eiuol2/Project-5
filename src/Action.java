@@ -108,4 +108,5 @@ public final class Action
                     this.entity.getAnimationPeriod());
         }
     }
+
 }
