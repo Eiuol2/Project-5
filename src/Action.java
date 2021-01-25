@@ -101,7 +101,7 @@ public final class Action
         this.entity.nextImage();
 
         if (this.repeatCount != 1) {
-            Functions.scheduleEvent(scheduler, this.entity,
+            scheduler.scheduleEvent(this.entity,
                     this.entity.createAnimationAction(
                             Math.max(this.repeatCount - 1,
                                     0)),

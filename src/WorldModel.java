@@ -67,7 +67,7 @@ public final class WorldModel
             }
         }
 
-        return Functions.nearestEntity(ofType, pos);
+        return nearestEntity(ofType, pos);
     }
 
     public void addEntity(Entity entity) {
@@ -163,6 +163,30 @@ public final class WorldModel
 
         return Optional.empty();
     }
+
+    public Optional<Entity> nearestEntity(
+            List<Entity> entities, Point pos)
+    {
+        if (entities.isEmpty()) {
+            return Optional.empty();
+        }
+        else {
+            Entity nearest = entities.get(0);
+            int nearestDistance = nearest.getposition().distanceSquared(pos);
+
+            for (Entity other : entities) {
+                int otherDistance = other.getposition().distanceSquared(pos);
+
+                if (otherDistance < nearestDistance) {
+                    nearest = other;
+                    nearestDistance = otherDistance;
+                }
+            }
+
+            return Optional.of(nearest);
+        }
+    }
+
 
 
 }

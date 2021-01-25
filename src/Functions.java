@@ -322,7 +322,7 @@ public final class Functions
     }
 
      */
-
+/*
     public static void scheduleActions(
             Entity entity,
             EventScheduler scheduler,
@@ -331,49 +331,49 @@ public final class Functions
     {
         switch (entity.getKind()) {
             case MINER_FULL:
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createActivityAction(world, imageStore),
                               entity.getactionPeriod());
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createAnimationAction(0),
                               entity.getAnimationPeriod());
                 break;
 
             case MINER_NOT_FULL:
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createActivityAction(world, imageStore),
                               entity.getactionPeriod());
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createAnimationAction(0),
                               entity.getAnimationPeriod());
                 break;
 
             case ORE:
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createActivityAction(world, imageStore),
                               entity.getactionPeriod());
                 break;
 
             case ORE_BLOB:
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createActivityAction(world, imageStore),
                               entity.getactionPeriod());
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createAnimationAction(0),
                               entity.getAnimationPeriod());
                 break;
 
             case QUAKE:
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createActivityAction(world, imageStore),
                               entity.getactionPeriod());
-                scheduleEvent(scheduler, entity, entity.createAnimationAction(
+                scheduler.scheduleEvent(entity, entity.createAnimationAction(
                                                                        QUAKE_ANIMATION_REPEAT_COUNT),
                               entity.getAnimationPeriod());
                 break;
 
             case VEIN:
-                scheduleEvent(scheduler, entity,
+                scheduler.scheduleEvent(entity,
                               entity.createActivityAction(world, imageStore),
                               entity.getactionPeriod());
                 break;
@@ -381,6 +381,8 @@ public final class Functions
             default:
         }
     }
+
+ */
 /*
     public static boolean transformNotFull(
             Entity entity,
@@ -575,7 +577,7 @@ public final class Functions
     }
 
      */
-
+/*
     public static void scheduleEvent(
             EventScheduler scheduler,
             Entity entity,
@@ -595,6 +597,8 @@ public final class Functions
         scheduler.getPendingEvents().put(entity, pending);
     }
 
+ */
+/*
     public static void unscheduleAllEvents(
             EventScheduler scheduler, Entity entity)
     {
@@ -607,6 +611,8 @@ public final class Functions
         }
     }
 
+ */
+/*
     public static void removePendingEvent(
             EventScheduler scheduler, Event event)
     {
@@ -617,6 +623,8 @@ public final class Functions
         }
     }
 
+ */
+/*
     public static void updateOnTime(EventScheduler scheduler, long time) {
         while (!scheduler.getEventQueue().isEmpty()
                 && scheduler.getEventQueue().peek().gettime() < time) {
@@ -627,6 +635,8 @@ public final class Functions
             next.getaction().executeAction(scheduler);
         }
     }
+
+ */
 /*
     public static List<PImage> getImageList(ImageStore imageStore, String key) {
         return imageStore.images.getOrDefault(key, imageStore.defaultImages);
@@ -880,6 +890,7 @@ public final class Functions
         return world.withinBounds(pos) && getOccupancyCell(world, pos) != null;
     }
 */
+    /*
     public static Optional<Entity> nearestEntity(
             List<Entity> entities, Point pos)
     {
@@ -902,6 +913,8 @@ public final class Functions
             return Optional.of(nearest);
         }
     }
+
+     */
 
 /*
     public static int distanceSquared(Point p1, Point p2) {
