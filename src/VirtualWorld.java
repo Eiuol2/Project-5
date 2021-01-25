@@ -35,12 +35,15 @@ public final class VirtualWorld extends PApplet
 
     public static double timeScale = 1.0;
 
-    public ImageStore imageStore;
-    public WorldModel world;
-    public WorldView view;
-    public EventScheduler scheduler;
+    private ImageStore imageStore;
+    private WorldModel world;
+    private WorldView view;
+    private EventScheduler scheduler;
 
-    public long nextTime;
+    private long nextTime;
+
+
+
 
     public void settings() {
         size(VIEW_WIDTH, VIEW_HEIGHT);
@@ -74,7 +77,7 @@ public final class VirtualWorld extends PApplet
             nextTime = time + TIMER_ACTION_PERIOD;
         }
 
-        Functions.drawViewport(view);
+        view.drawViewport();
     }
 
     public void keyPressed() {
@@ -96,13 +99,13 @@ public final class VirtualWorld extends PApplet
                     dx = 1;
                     break;
             }
-            Functions.shiftView(view, dx, dy);
+            view.shiftView(dx, dy);
         }
     }
 
     public static Background createDefaultBackground(ImageStore imageStore) {
         return new Background(DEFAULT_IMAGE_NAME,
-                              Functions.getImageList(imageStore,
+                              imageStore.getImageList(
                                                      DEFAULT_IMAGE_NAME));
     }
 
@@ -121,7 +124,7 @@ public final class VirtualWorld extends PApplet
     {
         try {
             Scanner in = new Scanner(new File(filename));
-            Functions.loadImages(in, imageStore, screen);
+            imageStore.loadImages(in, screen);
         }
         catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
@@ -143,7 +146,7 @@ public final class VirtualWorld extends PApplet
     public static void scheduleActions(
             WorldModel world, EventScheduler scheduler, ImageStore imageStore)
     {
-        for (Entity entity : world.entities) {
+        for (Entity entity : world.getEntities()) {
             Functions.scheduleActions(entity, scheduler, world, imageStore);
         }
     }
