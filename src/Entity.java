@@ -17,10 +17,10 @@ public final class Entity
 
 
 
-    private static final String ORE_ID_PREFIX = "ore -- ";
-    private static final int ORE_CORRUPT_MIN = 20000;
-    private static final int ORE_CORRUPT_MAX = 30000;
-    private static final String ORE_KEY = "ore";
+    private final String ORE_ID_PREFIX = "ore -- ";
+    private final int ORE_CORRUPT_MIN = 20000;
+    private final int ORE_CORRUPT_MAX = 30000;
+    private final String ORE_KEY = "ore";
 
 
 
