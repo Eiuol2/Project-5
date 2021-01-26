@@ -12,7 +12,7 @@ public final class WorldModel
 
 
 
-    private static final int ORE_REACH = 1;
+    private final int ORE_REACH = 1;
 
 
     public int getNumRows()
