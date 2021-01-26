@@ -8,7 +8,7 @@ public final class EventScheduler
 
 
 
-    public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
+    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
 
     public EventScheduler(double timeScale) {
         this.eventQueue = new PriorityQueue<>(new EventComparator());
