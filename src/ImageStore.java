@@ -9,10 +9,10 @@ public final class ImageStore
 {
 
 
-    private static final int KEYED_IMAGE_MIN = 5;
-    private static final int KEYED_RED_IDX = 2;
-    private static final int KEYED_GREEN_IDX = 3;
-    private static final int KEYED_BLUE_IDX = 4;
+    private final int KEYED_IMAGE_MIN = 5;
+    private final int KEYED_RED_IDX = 2;
+    private final int KEYED_GREEN_IDX = 3;
+    private final int KEYED_BLUE_IDX = 4;
 
 
 
