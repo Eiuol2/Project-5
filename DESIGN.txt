@@ -1,0 +1,12 @@
+﻿The methods left within functions were the create, parse, setalpha, and load methods. I believe these methods should stay in functions since they do not particularly belong to a specific class or behave in a way that would imply so.
+
+
+The ambiguous methods I thought were a bit confusing were:
+
+
+getCurrentImage:
+This weird method had both aspects of Background and Entity. It took me a while to figure it out and it was only until we had the lab discussion about where to place it that I managed to actually “cut up” the method into its respective .java files.
+
+
+Clamp:
+I decided to include this method into worldview just to get it out of the functions .java file. However, I do believe worldview is where it belongs since it is being called by shiftView in the same .java file.
