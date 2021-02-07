@@ -13,7 +13,7 @@ public final class Entity
     private final int BLOB_ANIMATION_MAX = 150;
 
     private final String QUAKE_KEY = "quake";
-
+    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
 
 
 
@@ -104,7 +104,7 @@ public final class Entity
         scheduler.unscheduleAllEvents(entity);
 
         world.addEntity(miner);
-        scheduler.scheduleActions(miner, world, imageStore);
+        miner.scheduleActions(scheduler, world, imageStore);
     }
 
     public boolean transformNotFull(
@@ -123,7 +123,7 @@ public final class Entity
             scheduler.unscheduleAllEvents(entity);
 
             world.addEntity(miner);
-            scheduler.scheduleActions(miner, world, imageStore);
+            miner.scheduleActions(scheduler, world, imageStore);
 
             return true;
         }
@@ -263,7 +263,7 @@ public final class Entity
                 imageStore.getImageList(BLOB_KEY));
 
         world.addEntity(blob);
-        scheduler.scheduleActions(blob, world, imageStore);
+        blob.scheduleActions(scheduler, world, imageStore);
     }
 
 
@@ -286,7 +286,7 @@ public final class Entity
 
                 world.addEntity(quake);
                 nextPeriod += this.actionPeriod;
-                scheduler.scheduleActions(quake, world, imageStore);
+                quake.scheduleActions(scheduler, world, imageStore);
             }
         }
 
@@ -317,7 +317,7 @@ public final class Entity
                             ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),
                     imageStore.getImageList(ORE_KEY));
             world.addEntity(ore);
-            scheduler.scheduleActions(ore, world, imageStore);
+            ore.scheduleActions(scheduler, world, imageStore);
         }
 
         scheduler.scheduleEvent(this,
@@ -402,6 +402,64 @@ public final class Entity
         return ((this.images.get(this.imageIndex)));
     }
 
+
+    public void scheduleActions(
+            EventScheduler scheduler,
+            WorldModel world,
+            ImageStore imageStore)
+    {
+        switch (this.getKind()) {
+            case MINER_FULL:
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        this.getactionPeriod());
+                scheduler.scheduleEvent(this,
+                        this.createAnimationAction(0),
+                        this.getAnimationPeriod());
+                break;
+
+            case MINER_NOT_FULL:
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        this.getactionPeriod());
+                scheduler.scheduleEvent(this,
+                        this.createAnimationAction(0),
+                        this.getAnimationPeriod());
+                break;
+
+            case ORE:
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        this.getactionPeriod());
+                break;
+
+            case ORE_BLOB:
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        this.getactionPeriod());
+                scheduler.scheduleEvent(this,
+                        this.createAnimationAction(0),
+                        this.getAnimationPeriod());
+                break;
+
+            case QUAKE:
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        this.getactionPeriod());
+                scheduler.scheduleEvent(this, this.createAnimationAction(
+                        QUAKE_ANIMATION_REPEAT_COUNT),
+                        this.getAnimationPeriod());
+                break;
+
+            case VEIN:
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        this.getactionPeriod());
+                break;
+
+            default:
+        }
+    }
 
 
 }

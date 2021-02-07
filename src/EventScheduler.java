@@ -8,7 +8,7 @@ public final class EventScheduler
 
 
 
-    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
+
 
     public EventScheduler(double timeScale) {
         this.eventQueue = new PriorityQueue<>(new EventComparator());
@@ -33,7 +33,7 @@ public final class EventScheduler
         pending.add(event);
         this.pendingEvents.put(entity, pending);
     }
-
+/*
     public void scheduleActions(
             Entity entity,
             WorldModel world,
@@ -91,6 +91,7 @@ public final class EventScheduler
             default:
         }
     }
+    */
 
     public void unscheduleAllEvents(Entity entity)
     {
@@ -102,6 +103,8 @@ public final class EventScheduler
             }
         }
     }
+
+
 
     public void removePendingEvent(Event event)
     {
