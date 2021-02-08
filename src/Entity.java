@@ -15,17 +15,17 @@ public interface Entity
             ImageStore imageStore,
             EventScheduler scheduler);
 
-    int getAnimationPeriod();
+ //   int getAnimationPeriod();
 
     void nextImage();
 
-    Action createAnimationAction(int repeatCount);
+//    Action createAnimationAction(int repeatCount);
 
     Point getposition();
 
     void setPosition(Point p);
 
-    PImage getCurrentImage();
+//    PImage getCurrentImage();
 
 
 }

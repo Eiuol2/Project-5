@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class OBSTACLE implements Entity  {
+public class OBSTACLE implements MISC  {
 
     private final String BLOB_KEY = "blob";
     private final String BLOB_ID_SUFFIX = " -- blob";
@@ -34,30 +34,6 @@ public class OBSTACLE implements Entity  {
     private final int animationPeriod;
 
 
-    public void setPosition(Point p)
-    {
-        this.position = p;
-    }
-
-
-
-    public String getid()
-    {
-        return this.id;
-    }
-
-    public Point getposition()
-    {
-        return this.position;
-    }
-
-
-    public int getactionPeriod()
-    {
-        return this.actionPeriod;
-    }
-
-
 
 
     public OBSTACLE(
@@ -79,25 +55,6 @@ public class OBSTACLE implements Entity  {
         this.animationPeriod = animationPeriod;
     }
 
-
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null, null,
-                repeatCount);
-    }
-
-    public Action createActivityAction(WorldModel world, ImageStore imageStore)
-    {
-        return new Activity( this, world, imageStore, 0);
-    }
-
-
-    public int getAnimationPeriod() {
-                throw new UnsupportedOperationException(
-                        String.format("getAnimationPeriod not supported for %s",
-                                this.getClass()));
-        }
-
-
     public PImage getCurrentImage() {
         return ((this.images.get(this.imageIndex)));
     }
@@ -105,4 +62,4 @@ public class OBSTACLE implements Entity  {
 
     }
 
-}
+

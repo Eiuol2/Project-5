@@ -1,4 +1,4 @@
-public class Activity implements Action, Entity{
+public class Activity implements Action{
     private final Entity entity;
     private final WorldModel world;
     private final ImageStore imageStore;

@@ -3,8 +3,8 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class BLACKSMITH implements Entity  {
-}
+public class BLACKSMITH implements MISC  {
+
 
     private final String BLOB_KEY = "blob";
     private final String BLOB_ID_SUFFIX = " -- blob";
@@ -35,30 +35,6 @@ public class BLACKSMITH implements Entity  {
     private final int animationPeriod;
 
 
-    public void setPosition(Point p)
-    {
-        this.position = p;
-    }
-
-
-
-    public String getid()
-    {
-        return this.id;
-    }
-
-    public Point getposition()
-    {
-        return this.position;
-    }
-
-
-    public int getactionPeriod()
-    {
-        return this.actionPeriod;
-    }
-
-
 
 
     public BLACKSMITH(
@@ -82,26 +58,6 @@ public class BLACKSMITH implements Entity  {
 
 
 
-    public void nextImage() {
-        this.imageIndex = (this.imageIndex + 1) % this.images.size();
-    }
-
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null, null,
-                repeatCount);
-    }
-
-    public Action createActivityAction(WorldModel world, ImageStore imageStore)
-    {
-        return new Activity( this, world, imageStore, 0);
-    }
-
-
-    public int getAnimationPeriod() {
-                throw new UnsupportedOperationException(
-                        String.format("getAnimationPeriod not supported for %s",
-                                this.getClass()));
-        }
 
     public PImage getCurrentImage() {
         return ((this.images.get(this.imageIndex)));
