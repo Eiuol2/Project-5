@@ -21,6 +21,10 @@ public interface Entity
 
     Action createAnimationAction(int repeatCount);
 
+    Point getposition();
+
+    void setPosition(Point p);
+
 
 }
 

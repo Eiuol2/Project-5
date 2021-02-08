@@ -110,36 +110,13 @@ public class ORE_BLOB implements Entity  {
 
 
 
+
     public void executeActivity(
             WorldModel world,
             ImageStore imageStore,
-            EventScheduler scheduler)
-    {
-        Point pos = this.position;
-
-        world.removeEntity(this);
-        scheduler.unscheduleAllEvents(this);
-
-        Entity blob = Functions.createOreBlob(this.getid() + BLOB_ID_SUFFIX, pos,
-                this.actionPeriod / BLOB_PERIOD_SCALE,
-                BLOB_ANIMATION_MIN + Functions.rand.nextInt(
-                        BLOB_ANIMATION_MAX
-                                - BLOB_ANIMATION_MIN),
-                imageStore.getImageList(BLOB_KEY));
-
-        world.addEntity(blob);
-        blob.scheduleActions(scheduler, world, imageStore);
-    }
-
-
-
-    public void executeOreBlobActivity(
-            WorldModel world,
-            ImageStore imageStore,
-            EventScheduler scheduler)
-    {
+            EventScheduler scheduler) {
         Optional<Entity> blobTarget =
-                world.findNearest(this.position, EntityKind.VEIN);
+                world.findNearest(this.position, VEIN.class);
         long nextPeriod = this.actionPeriod;
 
         if (blobTarget.isPresent()) {
@@ -159,59 +136,6 @@ public class ORE_BLOB implements Entity  {
                 this.createActivityAction(world, imageStore),
                 nextPeriod);
     }
-
-    public void executeQuakeActivity(
-            WorldModel world,
-            ImageStore imageStore,
-            EventScheduler scheduler)
-    {
-        scheduler.unscheduleAllEvents(this);
-        world.removeEntity(this);
-    }
-
-    public void executeVeinActivity(
-            WorldModel world,
-            ImageStore imageStore,
-            EventScheduler scheduler)
-    {
-        Optional<Point> openPt = world.findOpenAround(this.getposition());
-
-        if (openPt.isPresent()) {
-            Entity ore = Functions.createOre(ORE_ID_PREFIX + this.id, openPt.get(),
-                    ORE_CORRUPT_MIN + Functions.rand.nextInt(
-                            ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),
-                    imageStore.getImageList(ORE_KEY));
-            world.addEntity(ore);
-            ore.scheduleActions(scheduler, world, imageStore);
-        }
-
-        scheduler.scheduleEvent(this,
-                this.createActivityAction(world, imageStore),
-                this.getactionPeriod());
-    }
-    public boolean moveToFull(
-            WorldModel world,
-            Entity target,
-            EventScheduler scheduler)
-    {
-        if (this.position.adjacent(target.getposition())) {
-            return true;
-        }
-        else {
-            Point nextPos = this.nextPositionMiner(world, target.getposition());
-
-            if (!this.position.equals(nextPos)) {
-                Optional<Entity> occupant = world.getOccupant(nextPos);
-                if (occupant.isPresent()) {
-                    scheduler.unscheduleAllEvents(occupant.get());
-                }
-
-                world.moveEntity(this, nextPos);
-            }
-            return false;
-        }
-    }
-
 
 
     public boolean moveToOreBlob(
@@ -247,15 +171,15 @@ public class ORE_BLOB implements Entity  {
 
         Optional<Entity> occupant = world.getOccupant(newPos);
 
-        if (horiz == 0 || (occupant.isPresent() && !(occupant.get().getKind()
-                == EntityKind.ORE)))
+        if (horiz == 0 || (occupant.isPresent() && !(occupant.get().getClass()
+                == ORE.class)))
         {
             int vert = Integer.signum(destPos.y - this.position.y);
             newPos = new Point(this.position.x, this.position.y + vert);
             occupant = world.getOccupant(newPos);
 
-            if (vert == 0 || (occupant.isPresent() && !(occupant.get().getKind()
-                    == EntityKind.ORE)))
+            if (vert == 0 || (occupant.isPresent() && !(occupant.get().getClass()
+                    == ORE.class)))
             {
                 newPos = this.position;
             }
@@ -273,57 +197,15 @@ public class ORE_BLOB implements Entity  {
             WorldModel world,
             ImageStore imageStore)
     {
-        switch (this.getKind()) {
-            case MINER_FULL:
+
                 scheduler.scheduleEvent(this,
                         this.createActivityAction(world, imageStore),
                         this.getactionPeriod());
                 scheduler.scheduleEvent(this,
                         this.createAnimationAction(0),
                         this.getAnimationPeriod());
-                break;
 
-            case MINER_NOT_FULL:
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-                scheduler.scheduleEvent(this,
-                        this.createAnimationAction(0),
-                        this.getAnimationPeriod());
-                break;
 
-            case ORE:
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-                break;
-
-            case ORE_BLOB:
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-                scheduler.scheduleEvent(this,
-                        this.createAnimationAction(0),
-                        this.getAnimationPeriod());
-                break;
-
-            case QUAKE:
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-                scheduler.scheduleEvent(this, this.createAnimationAction(
-                        QUAKE_ANIMATION_REPEAT_COUNT),
-                        this.getAnimationPeriod());
-                break;
-
-            case VEIN:
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-                break;
-
-            default:
-        }
     }
 
 }
