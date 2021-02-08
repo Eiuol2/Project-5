@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class OBSTACLE implements MISC  {
+public class OBSTACLE implements Entity  {
 
     private final String BLOB_KEY = "blob";
     private final String BLOB_ID_SUFFIX = " -- blob";
@@ -34,6 +34,30 @@ public class OBSTACLE implements MISC  {
     private final int animationPeriod;
 
 
+    public void setPosition(Point p)
+    {
+        this.position = p;
+    }
+
+
+
+    public String getid()
+    {
+        return this.id;
+    }
+
+    public Point getposition()
+    {
+        return this.position;
+    }
+
+
+    public int getactionPeriod()
+    {
+        return this.actionPeriod;
+    }
+
+
 
 
     public OBSTACLE(
@@ -55,9 +79,39 @@ public class OBSTACLE implements MISC  {
         this.animationPeriod = animationPeriod;
     }
 
+
+    @Override
+    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
+        
+    }
+
+    @Override
+    public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
+
+    }
+
+    @Override
+    public int getAnimationPeriod() {
+        return 0;
+    }
+
+    @Override
+    public void nextImage() {
+
+    }
+
+    public Action createAnimationAction(int repeatCount) {
+        return new Animation( this, null, null,
+                repeatCount);
+    }
+
+
+
     public PImage getCurrentImage() {
         return ((this.images.get(this.imageIndex)));
     }
+
+
 
 
     }

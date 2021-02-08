@@ -216,15 +216,18 @@ public final class Functions
         return properties.length == VEIN_NUM_PROPERTIES;
     }
 
-    public static BLACKSMITH createBlacksmith(
+    public static Entity createBlacksmith(
             String id, Point position, List<PImage> images)
     {
-        return new BLACKSMITH(id, position, images, 0, 0, 0,
-                          0);
+
+        BLACKSMITH b = new BLACKSMITH(id, position, images, 0, 0, 0, 0);
+        Entity temp = (Entity)b;
+
+        return temp;
     }
 
 
-    public static MINER_FULL createMinerFull(
+    public static Entity createMinerFull(
             String id,
             int resourceLimit,
             Point position,
@@ -232,14 +235,16 @@ public final class Functions
             int animationPeriod,
             List<PImage> images)
     {
-        return new MINER_FULL(id, position, images,
-                          resourceLimit, resourceLimit, actionPeriod,
-                          animationPeriod);
+
+        MINER_FULL miner_full = new MINER_FULL(id, position, images, resourceLimit, resourceLimit, actionPeriod, animationPeriod);
+        Entity temp = (Entity)miner_full;
+
+        return temp;
     }
 
 
 
-    public static MINER_NOT_FULL createMinerNotFull(
+    public static Entity createMinerNotFull(
             String id,
             int resourceLimit,
             Point position,
@@ -247,47 +252,58 @@ public final class Functions
             int animationPeriod,
             List<PImage> images)
     {
-        return new MINER_NOT_FULL(id, position, images,
-                          resourceLimit, 0, actionPeriod, animationPeriod);
+
+        MINER_NOT_FULL asd = new MINER_NOT_FULL(id, position, images, resourceLimit, 0, actionPeriod, animationPeriod);
+        Entity temp = (Entity)asd;
+        return temp;
     }
 
 
-    public static OBSTACLE createObstacle(
+    public static Entity createObstacle(
             String id, Point position, List<PImage> images)
     {
-        return new OBSTACLE(id, position, images, 0, 0, 0,
-                          0);
+        OBSTACLE temp = new OBSTACLE(id, position, images, 0, 0, 0, 0);
+        Entity as = (Entity)temp;
+
+        return as;
     }
 
-    public static ORE createOre(
+    public static Entity createOre(
             String id, Point position, int actionPeriod, List<PImage> images)
     {
-        return new ORE(id, position, images, 0, 0,
-                          actionPeriod, 0);
+
+        ORE as = new ORE(id, position, images, 0, 0, actionPeriod, 0);
+        return as;
     }
 
-    public static ORE_BLOB createOreBlob(
+    public static Entity createOreBlob(
             String id,
             Point position,
             int actionPeriod,
             int animationPeriod,
             List<PImage> images)
     {
-        return new ORE_BLOB( id, position, images, 0, 0,
-                          actionPeriod, animationPeriod);
+
+        ORE_BLOB asd = new ORE_BLOB(id, position, images, 0, 0, actionPeriod, animationPeriod);
+        Entity temp = (Entity)asd;
+        return asd;
     }
 
-    public static QUAKE createQuake(
+    public static Entity createQuake(
             Point position, List<PImage> images)
     {
-        return new QUAKE(QUAKE_ID, position, images, 0, 0,
-                          QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
+        QUAKE asd = new QUAKE(QUAKE_ID, position, images, 0, 0, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
+        Entity temp = (Entity)asd;
+
+        return temp;
     }
 
-    public static VEIN createVein(
+    public static Entity createVein(
             String id, Point position, int actionPeriod, List<PImage> images)
     {
-        return new VEIN(id, position, images, 0, 0,
-                          actionPeriod, 0);
+        VEIN asd = new VEIN(id, position, images, 0, 0, actionPeriod, 0);
+        Entity temp = (Entity)asd;
+
+        return asd;
     }
 }

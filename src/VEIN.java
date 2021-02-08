@@ -125,6 +125,10 @@ public class VEIN implements Entity {
                 this.getactionPeriod());
     }
 
+    @Override
+    public int getAnimationPeriod() {
+        return 0;
+    }
 
 
     public PImage getCurrentImage() {

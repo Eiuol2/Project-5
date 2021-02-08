@@ -37,45 +37,43 @@ public class Activity implements Action{
         this.repeatCount = repeatCount;
     }
 
-    public void executeAction(EventScheduler scheduler)
-    {
-            if(this.entity instanceof MINER_FULL) {
-                entity.executeActivity(this.world,
-                        this.imageStore, scheduler);
-            }
-
-        if(this.entity instanceof MINER_NOT_FULL) {
+    public void executeAction(EventScheduler scheduler) {
+        if (this.entity instanceof MINER_FULL) {
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
         }
 
-        if(this.entity instanceof ORE) {
+        if (this.entity instanceof MINER_NOT_FULL) {
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
         }
 
-        if(this.entity instanceof ORE_BLOB) {
+        if (this.entity instanceof ORE) {
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
         }
 
-        if(this.entity instanceof QUAKE) {
+        if (this.entity instanceof ORE_BLOB) {
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
         }
 
-        if(this.entity instanceof VEIN) {
+        if (this.entity instanceof QUAKE) {
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
         }
 
+        if (this.entity instanceof VEIN) {
+            entity.executeActivity(this.world,
+                    this.imageStore, scheduler);
+        }
+/*
                 throw new UnsupportedOperationException(String.format(
                         "executeActivityAction not supported for %s",
                         this.entity.getClass()));
         }
 
-    }
+ */
 
 
-
-
+    }}
