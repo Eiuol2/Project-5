@@ -1,28 +1,8 @@
 import processing.core.PImage;
 
 import java.util.List;
-import java.util.Optional;
 
 public class OBSTACLE implements Entity  {
-
-    private final String BLOB_KEY = "blob";
-    private final String BLOB_ID_SUFFIX = " -- blob";
-    private final int BLOB_PERIOD_SCALE = 4;
-    private final int BLOB_ANIMATION_MIN = 50;
-    private final int BLOB_ANIMATION_MAX = 150;
-
-    private final String QUAKE_KEY = "quake";
-    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-
-
-
-    private final String ORE_ID_PREFIX = "ore -- ";
-    private final int ORE_CORRUPT_MIN = 20000;
-    private final int ORE_CORRUPT_MAX = 30000;
-    private final String ORE_KEY = "ore";
-
-
-
 
     private final String id;
     private  Point position;
@@ -39,23 +19,11 @@ public class OBSTACLE implements Entity  {
         this.position = p;
     }
 
-
-
-    public String getid()
-    {
-        return this.id;
-    }
-
     public Point getposition()
     {
         return this.position;
     }
 
-
-    public int getactionPeriod()
-    {
-        return this.actionPeriod;
-    }
 
 
 
@@ -82,7 +50,7 @@ public class OBSTACLE implements Entity  {
 
     @Override
     public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
-        
+
     }
 
     @Override

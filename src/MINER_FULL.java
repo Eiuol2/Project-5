@@ -5,23 +5,6 @@ import java.util.Optional;
 
 public class MINER_FULL implements Entity  {
 
-    private final String BLOB_KEY = "blob";
-    private final String BLOB_ID_SUFFIX = " -- blob";
-    private final int BLOB_PERIOD_SCALE = 4;
-    private final int BLOB_ANIMATION_MIN = 50;
-    private final int BLOB_ANIMATION_MAX = 150;
-
-    private final String QUAKE_KEY = "quake";
-    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-
-
-
-    private final String ORE_ID_PREFIX = "ore -- ";
-    private final int ORE_CORRUPT_MIN = 20000;
-    private final int ORE_CORRUPT_MAX = 30000;
-    private final String ORE_KEY = "ore";
-
-
 
 
     private final String id;
@@ -39,12 +22,6 @@ public class MINER_FULL implements Entity  {
         this.position = p;
     }
 
-
-
-    public String getid()
-    {
-        return this.id;
-    }
 
     public Point getposition()
     {
@@ -98,30 +75,6 @@ public class MINER_FULL implements Entity  {
         miner.scheduleActions(scheduler, world, imageStore);
     }
 
-    public boolean transformNotFull(
-            Entity entity,
-            WorldModel world,
-            EventScheduler scheduler,
-            ImageStore imageStore)
-    {
-        if (this.resourceCount >= this.resourceLimit) {
-            Entity miner = Functions.createMinerFull(this.id, this.resourceLimit,
-                    this.position, this.actionPeriod,
-                    this.animationPeriod,
-                    this.images);
-
-            world.removeEntity(entity);
-            scheduler.unscheduleAllEvents(entity);
-
-            world.addEntity(miner);
-            miner.scheduleActions(scheduler, world, imageStore);
-
-            return true;
-        }
-
-        return false;
-    }
-
     public Point nextPositionMiner(WorldModel world, Point destPos)
     {
         int horiz = Integer.signum(destPos.x - this.position.x);
@@ -158,13 +111,6 @@ public class MINER_FULL implements Entity  {
     public int getAnimationPeriod() {
 
                 return this.animationPeriod;
-
-                /*
-                throw new UnsupportedOperationException(
-                        String.format("getAnimationPeriod not supported for %s",
-                                this.kind));
-
-                 */
 
     }
 

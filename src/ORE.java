@@ -1,7 +1,7 @@
 import processing.core.PImage;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public class ORE implements Entity  {
 
@@ -10,16 +10,6 @@ public class ORE implements Entity  {
     private final int BLOB_PERIOD_SCALE = 4;
     private final int BLOB_ANIMATION_MIN = 50;
     private final int BLOB_ANIMATION_MAX = 150;
-
-    private final String QUAKE_KEY = "quake";
-    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-
-
-
-    private final String ORE_ID_PREFIX = "ore -- ";
-    private final int ORE_CORRUPT_MIN = 20000;
-    private final int ORE_CORRUPT_MAX = 30000;
-    private final String ORE_KEY = "ore";
 
 
 
@@ -98,13 +88,6 @@ public class ORE implements Entity  {
 
     public int getAnimationPeriod() {
                 return this.animationPeriod;
-/*
-                throw new UnsupportedOperationException(
-                        String.format("getAnimationPeriod not supported for %s",
-                                this.kind));
-
- */
-
     }
 
 

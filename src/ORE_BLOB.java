@@ -5,24 +5,7 @@ import java.util.Optional;
 
 public class ORE_BLOB implements Entity  {
 
-    private final String BLOB_KEY = "blob";
-    private final String BLOB_ID_SUFFIX = " -- blob";
-    private final int BLOB_PERIOD_SCALE = 4;
-    private final int BLOB_ANIMATION_MIN = 50;
-    private final int BLOB_ANIMATION_MAX = 150;
-
     private final String QUAKE_KEY = "quake";
-    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-
-
-
-    private final String ORE_ID_PREFIX = "ore -- ";
-    private final int ORE_CORRUPT_MIN = 20000;
-    private final int ORE_CORRUPT_MAX = 30000;
-    private final String ORE_KEY = "ore";
-
-
-
 
     private final String id;
     private  Point position;
@@ -39,18 +22,10 @@ public class ORE_BLOB implements Entity  {
         this.position = p;
     }
 
-
-
-    public String getid()
-    {
-        return this.id;
-    }
-
     public Point getposition()
     {
         return this.position;
     }
-
 
     public int getactionPeriod()
     {
@@ -100,12 +75,6 @@ public class ORE_BLOB implements Entity  {
 
     public int getAnimationPeriod() {
                 return this.animationPeriod;
-                /*
-                throw new UnsupportedOperationException(
-                        String.format("getAnimationPeriod not supported for %s",
-                                this.kind));
-
-                 */
         }
 
 
