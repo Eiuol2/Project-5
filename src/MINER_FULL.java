@@ -144,32 +144,6 @@ public class MINER_FULL implements Entity  {
     }
 
 
-    public boolean moveToNotFull(WorldModel world,
-                                 Entity target,
-                                 EventScheduler scheduler)
-    {
-        if (this.position.adjacent(target.position)) {
-            this.resourceCount += 1;
-            world.removeEntity(target);
-            scheduler.unscheduleAllEvents(target);
-
-            return true;
-        }
-        else {
-            Point nextPos = this.nextPositionMiner(world, target.getposition());
-
-            if (!this.position.equals(nextPos)) {
-                Optional<Entity> occupant = world.getOccupant(nextPos);
-                if (occupant.isPresent()) {
-                    scheduler.unscheduleAllEvents(occupant.get());
-                }
-
-                world.moveEntity(this, nextPos);
-            }
-            return false;
-        }
-    }
-
     public Action createAnimationAction(int repeatCount) {
         return new Animation( this, null, null,
                 repeatCount);

@@ -25,6 +25,8 @@ public interface Entity
 
     void setPosition(Point p);
 
+    PImage getCurrentImage();
+
 
 }
 
