@@ -1,4 +1,4 @@
-public class Activity implements Action{
+public class Activity implements Action, Entity{
     private final Entity entity;
     private final WorldModel world;
     private final ImageStore imageStore;
@@ -39,44 +39,43 @@ public class Activity implements Action{
 
     public void executeAction(EventScheduler scheduler)
     {
-        switch (this.entity.getKind()) {
-            case MINER_FULL:
-                entity.executeMinerFullActivity(this.world,
+            if(this.entity instanceof MINER_FULL) {
+                entity.executeActivity(this.world,
                         this.imageStore, scheduler);
-                break;
+            }
 
-            case MINER_NOT_FULL:
-                entity.executeMinerNotFullActivity(this.world,
-                        this.imageStore, scheduler);
-                break;
+        if(this.entity instanceof MINER_NOT_FULL) {
+            entity.executeActivity(this.world,
+                    this.imageStore, scheduler);
+        }
 
-            case ORE:
-                entity.executeOreActivity(this.world,
-                        this.imageStore, scheduler);
-                break;
+        if(this.entity instanceof ORE) {
+            entity.executeActivity(this.world,
+                    this.imageStore, scheduler);
+        }
 
-            case ORE_BLOB:
-                entity.executeOreBlobActivity(this.world,
-                        this.imageStore, scheduler);
-                break;
+        if(this.entity instanceof ORE_BLOB) {
+            entity.executeActivity(this.world,
+                    this.imageStore, scheduler);
+        }
 
-            case QUAKE:
-                entity.executeQuakeActivity(this.world,
-                        this.imageStore, scheduler);
-                break;
+        if(this.entity instanceof QUAKE) {
+            entity.executeActivity(this.world,
+                    this.imageStore, scheduler);
+        }
 
-            case VEIN:
-                entity.executeVeinActivity(this.world,
-                        this.imageStore, scheduler);
-                break;
+        if(this.entity instanceof VEIN) {
+            entity.executeActivity(this.world,
+                    this.imageStore, scheduler);
+        }
 
-            default:
                 throw new UnsupportedOperationException(String.format(
                         "executeActivityAction not supported for %s",
-                        this.entity.getKind()));
+                        this.entity.getClass()));
         }
+
     }
 
 
-}
+
 
