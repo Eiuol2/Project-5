@@ -5,21 +5,11 @@ import java.util.List;
 
 public class ORE implements NonStatic  {
 
-    private final String BLOB_KEY = "blob";
-    private final String BLOB_ID_SUFFIX = " -- blob";
-    private final int BLOB_PERIOD_SCALE = 4;
-    private final int BLOB_ANIMATION_MIN = 50;
-    private final int BLOB_ANIMATION_MAX = 150;
-
-
-
 
     private final String id;
     private  Point position;
     private final List<PImage> images;
     private int imageIndex;
-    private final int resourceLimit;
-    private int resourceCount;
     private final int actionPeriod;
     private final int animationPeriod;
 
@@ -54,8 +44,6 @@ public class ORE implements NonStatic  {
             String id,
             Point position,
             List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
             int actionPeriod,
             int animationPeriod)
     {
@@ -63,8 +51,6 @@ public class ORE implements NonStatic  {
         this.position = position;
         this.images = images;
         this.imageIndex = 0;
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
         this.actionPeriod = actionPeriod;
         this.animationPeriod = animationPeriod;
     }
@@ -76,7 +62,7 @@ public class ORE implements NonStatic  {
 
 
     public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null, null,
+        return new Animation( this, null,
                 repeatCount);
     }
 
@@ -101,7 +87,12 @@ public class ORE implements NonStatic  {
         world.removeEntity(this);
         scheduler.unscheduleAllEvents(this);
 
-        Entity blob = Factory.createOreBlob(this.getid() + BLOB_ID_SUFFIX, pos,
+        String BLOB_KEY = "blob";
+        String BLOB_ID_SUFFIX = " -- blob";
+        int BLOB_PERIOD_SCALE = 4;
+        int BLOB_ANIMATION_MIN = 50;
+        int BLOB_ANIMATION_MAX = 150;
+        NonStatic blob = Factory.createOreBlob(this.getid() + BLOB_ID_SUFFIX, pos,
                 this.actionPeriod / BLOB_PERIOD_SCALE,
                 BLOB_ANIMATION_MIN + Functions.rand.nextInt(
                         BLOB_ANIMATION_MAX
@@ -109,8 +100,7 @@ public class ORE implements NonStatic  {
                 imageStore.getImageList(BLOB_KEY));
 
         world.addEntity(blob);
-        NonStatic temp = (NonStatic)blob;
-        temp.scheduleActions(scheduler, world, imageStore);
+        blob.scheduleActions(scheduler, world, imageStore);
     }
 
 

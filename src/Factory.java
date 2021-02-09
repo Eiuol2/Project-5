@@ -15,7 +15,7 @@ public final class Factory {
             String id, Point position, List<PImage> images)
     {
 
-        BLACKSMITH b = new BLACKSMITH(id, position, images, 0, 0, 0, 0);
+        BLACKSMITH b = new BLACKSMITH(id, position, images);
         Entity temp = (Entity)b;
 
         return temp;
@@ -67,7 +67,7 @@ public final class Factory {
             String id, Point position, int actionPeriod, List<PImage> images)
     {
 
-        ORE as = new ORE(id, position, images, 0, 0, actionPeriod, 0);
+        ORE as = new ORE(id, position, images, actionPeriod, 0);
         return as;
     }
 

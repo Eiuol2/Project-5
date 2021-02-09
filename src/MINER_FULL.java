@@ -98,7 +98,7 @@ public class MINER_FULL implements NonStatic  {
 
 
     public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null, null,
+        return new Animation( this, null,
                 repeatCount);
     }
 

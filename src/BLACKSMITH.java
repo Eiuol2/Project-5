@@ -6,7 +6,7 @@ public class BLACKSMITH implements Entity  {
 
     private  Point position;
     private final List<PImage> images;
-    private int imageIndex;
+    private final int imageIndex;
 
 
 
@@ -26,26 +26,12 @@ public class BLACKSMITH implements Entity  {
     public BLACKSMITH(
             String id,
             Point position,
-            List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
-            int actionPeriod,
-            int animationPeriod)
+            List<PImage> images)
     {
         this.position = position;
         this.images = images;
         this.imageIndex = 0;
     }
-
-/*
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null, null,
-                repeatCount);
-    }
-
- */
-
-
 
 
 

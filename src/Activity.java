@@ -15,16 +15,6 @@ public class Activity implements Action{
         return this.world;
     }
 
-    public ImageStore getimageStore()
-    {
-        return this.imageStore;
-    }
-
-    public int getrepeatCount()
-    {
-        return this.repeatCount;
-    }
-
     public Activity(
             NonStatic entity,
             WorldModel world,
