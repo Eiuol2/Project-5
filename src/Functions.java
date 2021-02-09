@@ -141,7 +141,7 @@ public final class Functions
         if (properties.length == MINER_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[MINER_COL]),
                                  Integer.parseInt(properties[MINER_ROW]));
-            Entity entity = Factory.createMinerNotFull(properties[MINER_ID],
+            NonStatic entity = Factory.createMinerNotFull(properties[MINER_ID],
                                                Integer.parseInt(
                                                        properties[MINER_LIMIT]),
                                                pt, Integer.parseInt(

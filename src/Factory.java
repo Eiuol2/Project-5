@@ -22,7 +22,7 @@ public final class Factory {
     }
 
 
-    public static Entity createMinerFull(
+    public static NonStatic createMinerFull(
             String id,
             int resourceLimit,
             Point position,
@@ -32,14 +32,14 @@ public final class Factory {
     {
 
         MINER_FULL miner_full = new MINER_FULL(id, position, images, resourceLimit, resourceLimit, actionPeriod, animationPeriod);
-        Entity temp = (Entity)miner_full;
+        NonStatic temp = (NonStatic) miner_full;
 
         return temp;
     }
 
 
 
-    public static Entity createMinerNotFull(
+    public static NonStatic createMinerNotFull(
             String id,
             int resourceLimit,
             Point position,
@@ -49,7 +49,7 @@ public final class Factory {
     {
 
         MINER_NOT_FULL asd = new MINER_NOT_FULL(id, position, images, resourceLimit, 0, actionPeriod, animationPeriod);
-        Entity temp = (Entity)asd;
+        NonStatic temp = (NonStatic) asd;
         return temp;
     }
 
@@ -71,7 +71,7 @@ public final class Factory {
         return as;
     }
 
-    public static Entity createOreBlob(
+    public static NonStatic createOreBlob(
             String id,
             Point position,
             int actionPeriod,
@@ -80,15 +80,15 @@ public final class Factory {
     {
 
         ORE_BLOB asd = new ORE_BLOB(id, position, images, 0, 0, actionPeriod, animationPeriod);
-        Entity temp = (Entity)asd;
+        NonStatic temp = (NonStatic) asd;
         return asd;
     }
 
-    public static Entity createQuake(
+    public static NonStatic createQuake(
             Point position, List<PImage> images)
     {
         QUAKE asd = new QUAKE(QUAKE_ID, position, images, 0, 0, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
-        Entity temp = (Entity)asd;
+        NonStatic temp = (NonStatic) asd;
 
         return temp;
     }
@@ -97,7 +97,7 @@ public final class Factory {
             String id, Point position, int actionPeriod, List<PImage> images)
     {
         VEIN asd = new VEIN(id, position, images, 0, 0, actionPeriod, 0);
-        Entity temp = (Entity)asd;
+        NonStatic temp = (NonStatic)asd;
 
         return asd;
     }

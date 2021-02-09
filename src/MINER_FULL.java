@@ -58,12 +58,12 @@ public class MINER_FULL implements NonStatic  {
 
 
     public void transformFull(
-            Entity entity,
+            NonStatic entity,
             WorldModel world,
             EventScheduler scheduler,
             ImageStore imageStore)
     {
-        Entity miner = Factory.createMinerNotFull(this.id, this.resourceLimit,
+        NonStatic miner = Factory.createMinerNotFull(this.id, this.resourceLimit,
                 this.position, this.actionPeriod,
                 this.animationPeriod,
                 this.images);
