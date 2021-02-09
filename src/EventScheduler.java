@@ -33,65 +33,7 @@ public final class EventScheduler
         pending.add(event);
         this.pendingEvents.put(entity, pending);
     }
-/*
-    public void scheduleActions(
-            Entity entity,
-            WorldModel world,
-            ImageStore imageStore)
-    {
-        switch (entity.getKind()) {
-            case MINER_FULL:
-                this.scheduleEvent(entity,
-                        entity.createActivityAction(world, imageStore),
-                        entity.getactionPeriod());
-                this.scheduleEvent(entity,
-                        entity.createAnimationAction(0),
-                        entity.getAnimationPeriod());
-                break;
 
-            case MINER_NOT_FULL:
-                this.scheduleEvent(entity,
-                        entity.createActivityAction(world, imageStore),
-                        entity.getactionPeriod());
-                this.scheduleEvent(entity,
-                        entity.createAnimationAction(0),
-                        entity.getAnimationPeriod());
-                break;
-
-            case ORE:
-                this.scheduleEvent(entity,
-                        entity.createActivityAction(world, imageStore),
-                        entity.getactionPeriod());
-                break;
-
-            case ORE_BLOB:
-                this.scheduleEvent(entity,
-                        entity.createActivityAction(world, imageStore),
-                        entity.getactionPeriod());
-                this.scheduleEvent(entity,
-                        entity.createAnimationAction(0),
-                        entity.getAnimationPeriod());
-                break;
-
-            case QUAKE:
-                this.scheduleEvent(entity,
-                        entity.createActivityAction(world, imageStore),
-                        entity.getactionPeriod());
-                this.scheduleEvent(entity, entity.createAnimationAction(
-                        QUAKE_ANIMATION_REPEAT_COUNT),
-                        entity.getAnimationPeriod());
-                break;
-
-            case VEIN:
-                this.scheduleEvent(entity,
-                        entity.createActivityAction(world, imageStore),
-                        entity.getactionPeriod());
-                break;
-
-            default:
-        }
-    }
-    */
 
     public void unscheduleAllEvents(Entity entity)
     {

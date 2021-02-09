@@ -1,4 +1,4 @@
-import java.util.List;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,11 +8,6 @@ import processing.core.PApplet;
 public final class Functions
 {
     public static final Random rand = new Random();
-
-    public static final String QUAKE_ID = "quake";
-    public static final int QUAKE_ACTION_PERIOD = 1100;
-    public static final int QUAKE_ANIMATION_PERIOD = 100;
-
 
     public static final int COLOR_MASK = 0xffffff;
 
@@ -80,18 +75,16 @@ public final class Functions
         while (in.hasNextLine()) {
             try {
                 if (!processLine(in.nextLine(), world, imageStore)) {
-                    System.err.println(String.format("invalid entry on line %d",
-                                                     lineNumber));
+                    System.err.printf("invalid entry on line %d%n",
+                                                     lineNumber);
                 }
             }
             catch (NumberFormatException e) {
-                System.err.println(
-                        String.format("invalid entry on line %d", lineNumber));
+                System.err.printf("invalid entry on line %d%n", lineNumber);
             }
             catch (IllegalArgumentException e) {
-                System.err.println(
-                        String.format("issue on line %d: %s", lineNumber,
-                                      e.getMessage()));
+                System.err.printf("issue on line %d: %s%n", lineNumber,
+                              e.getMessage());
             }
             lineNumber++;
         }

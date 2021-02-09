@@ -6,22 +6,11 @@ import java.util.Optional;
 public class VEIN implements NonStatic {
 
 
-    private final String ORE_ID_PREFIX = "ore -- ";
-    private final int ORE_CORRUPT_MIN = 20000;
-    private final int ORE_CORRUPT_MAX = 30000;
-    private final String ORE_KEY = "ore";
-
-
-
-
     private final String id;
     private  Point position;
     private final List<PImage> images;
     private int imageIndex;
-    private final int resourceLimit;
-    private int resourceCount;
     private final int actionPeriod;
-    private final int animationPeriod;
 
 
     public void setPosition(Point p)
@@ -47,19 +36,13 @@ public class VEIN implements NonStatic {
             String id,
             Point position,
             List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
-            int actionPeriod,
-            int animationPeriod)
+            int actionPeriod)
     {
         this.id = id;
         this.position = position;
         this.images = images;
         this.imageIndex = 0;
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
         this.actionPeriod = actionPeriod;
-        this.animationPeriod = animationPeriod;
     }
 
 
@@ -95,6 +78,10 @@ public class VEIN implements NonStatic {
         Optional<Point> openPt = world.findOpenAround(this.getposition());
 
         if (openPt.isPresent()) {
+            String ORE_ID_PREFIX = "ore -- ";
+            int ORE_CORRUPT_MIN = 20000;
+            int ORE_CORRUPT_MAX = 30000;
+            String ORE_KEY = "ore";
             Entity ore = Factory.createOre(ORE_ID_PREFIX + this.id, openPt.get(),
                     ORE_CORRUPT_MIN + Functions.rand.nextInt(
                             ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),

@@ -118,9 +118,7 @@ public class MINER_NOT_FULL implements NonStatic  {
 
             if (!this.position.equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
-                if (occupant.isPresent()) {
-                    scheduler.unscheduleAllEvents(occupant.get());
-                }
+                occupant.ifPresent(scheduler::unscheduleAllEvents);
 
                 world.moveEntity(this, nextPos);
             }
@@ -153,7 +151,7 @@ public class MINER_NOT_FULL implements NonStatic  {
         Optional<Entity> notFullTarget =
                 world.findNearest(this.position, ORE.class);
 
-        if (!notFullTarget.isPresent() || !this.moveToNotFull(world,
+        if (notFullTarget.isEmpty() || !this.moveToNotFull(world,
                 notFullTarget.get(),
                 scheduler)
                 || !this.transformNotFull(this, world, scheduler, imageStore))

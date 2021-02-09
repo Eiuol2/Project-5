@@ -12,7 +12,6 @@ public class MINER_FULL implements NonStatic  {
     private final List<PImage> images;
     private int imageIndex;
     private final int resourceLimit;
-    private int resourceCount;
     private final int actionPeriod;
     private final int animationPeriod;
 
@@ -42,7 +41,6 @@ public class MINER_FULL implements NonStatic  {
             Point position,
             List<PImage> images,
             int resourceLimit,
-            int resourceCount,
             int actionPeriod,
             int animationPeriod)
     {
@@ -51,7 +49,6 @@ public class MINER_FULL implements NonStatic  {
         this.images = images;
         this.imageIndex = 0;
         this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
         this.actionPeriod = actionPeriod;
         this.animationPeriod = animationPeriod;
     }
@@ -150,9 +147,7 @@ public class MINER_FULL implements NonStatic  {
 
             if (!this.position.equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
-                if (occupant.isPresent()) {
-                    scheduler.unscheduleAllEvents(occupant.get());
-                }
+                occupant.ifPresent(scheduler::unscheduleAllEvents);
 
                 world.moveEntity(this, nextPos);
             }

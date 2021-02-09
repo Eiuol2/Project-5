@@ -15,10 +15,7 @@ public final class Factory {
             String id, Point position, List<PImage> images)
     {
 
-        BLACKSMITH b = new BLACKSMITH(id, position, images);
-        Entity temp = (Entity)b;
-
-        return temp;
+        return new BLACKSMITH(id, position, images);
     }
 
 
@@ -31,10 +28,7 @@ public final class Factory {
             List<PImage> images)
     {
 
-        MINER_FULL miner_full = new MINER_FULL(id, position, images, resourceLimit, resourceLimit, actionPeriod, animationPeriod);
-        NonStatic temp = (NonStatic) miner_full;
-
-        return temp;
+        return new MINER_FULL(id, position, images, resourceLimit, actionPeriod, animationPeriod);
     }
 
 
@@ -48,27 +42,22 @@ public final class Factory {
             List<PImage> images)
     {
 
-        MINER_NOT_FULL asd = new MINER_NOT_FULL(id, position, images, resourceLimit, 0, actionPeriod, animationPeriod);
-        NonStatic temp = (NonStatic) asd;
-        return temp;
+        return new MINER_NOT_FULL(id, position, images, resourceLimit, 0, actionPeriod, animationPeriod);
     }
 
 
     public static Entity createObstacle(
             String id, Point position, List<PImage> images)
     {
-        OBSTACLE temp = new OBSTACLE(id, position, images, 0, 0, 0, 0);
-        Entity as = (Entity)temp;
 
-        return as;
+        return new OBSTACLE(id, position, images);
     }
 
     public static Entity createOre(
             String id, Point position, int actionPeriod, List<PImage> images)
     {
 
-        ORE as = new ORE(id, position, images, actionPeriod, 0);
-        return as;
+        return new ORE(id, position, images, actionPeriod, 0);
     }
 
     public static NonStatic createOreBlob(
@@ -79,27 +68,21 @@ public final class Factory {
             List<PImage> images)
     {
 
-        ORE_BLOB asd = new ORE_BLOB(id, position, images, 0, 0, actionPeriod, animationPeriod);
-        NonStatic temp = (NonStatic) asd;
-        return asd;
+        return new ORE_BLOB(id, position, images, actionPeriod, animationPeriod);
     }
 
     public static NonStatic createQuake(
             Point position, List<PImage> images)
     {
-        QUAKE asd = new QUAKE(QUAKE_ID, position, images, 0, 0, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
-        NonStatic temp = (NonStatic) asd;
 
-        return temp;
+        return new QUAKE(position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
     }
 
     public static Entity createVein(
             String id, Point position, int actionPeriod, List<PImage> images)
     {
-        VEIN asd = new VEIN(id, position, images, 0, 0, actionPeriod, 0);
-        NonStatic temp = (NonStatic)asd;
 
-        return asd;
+        return new VEIN(id, position, images, actionPeriod);
     }
 
 

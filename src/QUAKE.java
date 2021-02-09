@@ -4,15 +4,9 @@ import java.util.List;
 
 public class QUAKE implements NonStatic  {
 
-    private final String QUAKE_KEY = "quake";
-    private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-
-    private final String id;
     private  Point position;
     private final List<PImage> images;
     private int imageIndex;
-    private final int resourceLimit;
-    private int resourceCount;
     private final int actionPeriod;
     private final int animationPeriod;
 
@@ -37,20 +31,14 @@ public class QUAKE implements NonStatic  {
 
 
     public QUAKE(
-            String id,
             Point position,
             List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
             int actionPeriod,
             int animationPeriod)
     {
-        this.id = id;
         this.position = position;
         this.images = images;
         this.imageIndex = 0;
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
         this.actionPeriod = actionPeriod;
         this.animationPeriod = animationPeriod;
     }
@@ -101,8 +89,9 @@ public class QUAKE implements NonStatic  {
                 scheduler.scheduleEvent(this,
                         this.createActivityAction(world, imageStore),
                         this.getactionPeriod());
-                scheduler.scheduleEvent(this, this.createAnimationAction(
-                        QUAKE_ANIMATION_REPEAT_COUNT),
+        int QUAKE_ANIMATION_REPEAT_COUNT = 10;
+        scheduler.scheduleEvent(this, this.createAnimationAction(
+                QUAKE_ANIMATION_REPEAT_COUNT),
                         this.getAnimationPeriod());
 
 

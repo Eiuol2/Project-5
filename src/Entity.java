@@ -1,5 +1,3 @@
-import java.util.List;
-import java.util.Optional;
 
 import processing.core.PImage;
 

@@ -9,14 +9,6 @@ public final class ImageStore
 {
 
 
-    private final int KEYED_IMAGE_MIN = 5;
-    private final int KEYED_RED_IDX = 2;
-    private final int KEYED_GREEN_IDX = 3;
-    private final int KEYED_BLUE_IDX = 4;
-
-
-
-
     private final Map<String, List<PImage>> images;
     private final List<PImage> defaultImages;
 
@@ -41,9 +33,8 @@ public final class ImageStore
                 processImageLine(in.nextLine(), screen);
             }
             catch (NumberFormatException e) {
-                System.out.println(
-                        String.format("Image format error on line %d",
-                                lineNumber));
+                System.out.printf("Image format error on line %d%n",
+                        lineNumber);
             }
             lineNumber++;
         }
@@ -62,9 +53,13 @@ public final class ImageStore
                 List<PImage> imgs = getImages(key);
                 imgs.add(img);
 
+                int KEYED_IMAGE_MIN = 5;
                 if (attrs.length >= KEYED_IMAGE_MIN) {
+                    int KEYED_RED_IDX = 2;
                     int r = Integer.parseInt(attrs[KEYED_RED_IDX]);
+                    int KEYED_GREEN_IDX = 3;
                     int g = Integer.parseInt(attrs[KEYED_GREEN_IDX]);
+                    int KEYED_BLUE_IDX = 4;
                     int b = Integer.parseInt(attrs[KEYED_BLUE_IDX]);
                     Functions.setAlpha(img, screen.color(r, g, b), 0);
                 }
@@ -74,12 +69,7 @@ public final class ImageStore
 
     public List<PImage> getImages(String key)
     {
-        List<PImage> imgs = this.images.get(key);
-        if (imgs == null) {
-            imgs = new LinkedList<>();
-            this.images.put(key, imgs);
-        }
-        return imgs;
+        return this.images.computeIfAbsent(key, k -> new LinkedList<>());
     }
 
 

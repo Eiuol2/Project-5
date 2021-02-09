@@ -7,7 +7,7 @@ public class OBSTACLE implements Entity  {
 
     private  Point position;
     private final List<PImage> images;
-    private int imageIndex;
+    private final int imageIndex;
 
 
     public void setPosition(Point p)
@@ -27,11 +27,7 @@ public class OBSTACLE implements Entity  {
     public OBSTACLE(
             String id,
             Point position,
-            List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
-            int actionPeriod,
-            int animationPeriod)
+            List<PImage> images)
     {
         this.position = position;
         this.images = images;
@@ -39,17 +35,6 @@ public class OBSTACLE implements Entity  {
     }
 
 
-
-
-
-
-/*
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null, null,
-                repeatCount);
-    }
-
- */
 
 
 

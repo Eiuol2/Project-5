@@ -6,13 +6,9 @@ public final class WorldModel
 {
     private final int numRows;
     private final int numCols;
-    private final Background background[][];
-    private final Entity occupancy[][];
+    private final Background[][] background;
+    private final Entity[][] occupancy;
     private final Set<Entity> entities;
-
-
-
-    private final int ORE_REACH = 1;
 
 
     public int getNumRows()
@@ -152,6 +148,7 @@ public final class WorldModel
     }
 
     public Optional<Point> findOpenAround(Point pos) {
+        int ORE_REACH = 1;
         for (int dy = -ORE_REACH; dy <= ORE_REACH; dy++) {
             for (int dx = -ORE_REACH; dx <= ORE_REACH; dx++) {
                 Point newPt = new Point(pos.x + dx, pos.y + dy);

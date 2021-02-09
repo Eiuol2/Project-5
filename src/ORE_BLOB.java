@@ -5,14 +5,9 @@ import java.util.Optional;
 
 public class ORE_BLOB implements NonStatic  {
 
-    private final String QUAKE_KEY = "quake";
-
-    private final String id;
     private  Point position;
     private final List<PImage> images;
     private int imageIndex;
-    private final int resourceLimit;
-    private int resourceCount;
     private final int actionPeriod;
     private final int animationPeriod;
 
@@ -39,17 +34,12 @@ public class ORE_BLOB implements NonStatic  {
             String id,
             Point position,
             List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
             int actionPeriod,
             int animationPeriod)
     {
-        this.id = id;
         this.position = position;
         this.images = images;
         this.imageIndex = 0;
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
         this.actionPeriod = actionPeriod;
         this.animationPeriod = animationPeriod;
     }
@@ -92,13 +82,13 @@ public class ORE_BLOB implements NonStatic  {
             Point tgtPos = blobTarget.get().getposition();
 
             if (moveToOreBlob(world, blobTarget.get(), scheduler)) {
-                Entity quake = Factory.createQuake(tgtPos,
+                String QUAKE_KEY = "quake";
+                NonStatic quake = Factory.createQuake(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
 
                 world.addEntity(quake);
                 nextPeriod += this.actionPeriod;
-                NonStatic temp = (NonStatic) quake;
-                temp.scheduleActions(scheduler, world, imageStore);
+                quake.scheduleActions(scheduler, world, imageStore);
             }
         }
 
@@ -123,9 +113,7 @@ public class ORE_BLOB implements NonStatic  {
 
             if (!this.position.equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
-                if (occupant.isPresent()) {
-                    scheduler.unscheduleAllEvents(occupant.get());
-                }
+                occupant.ifPresent(scheduler::unscheduleAllEvents);
 
                 world.moveEntity(this, nextPos);
             }
