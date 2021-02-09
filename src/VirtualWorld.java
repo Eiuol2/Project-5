@@ -146,8 +146,15 @@ public final class VirtualWorld extends PApplet
     public static void scheduleActions(
             WorldModel world, EventScheduler scheduler, ImageStore imageStore)
     {
-        for (Entity entity : world.getEntities()) {
-            entity.scheduleActions(scheduler, world, imageStore);
+        for (Entity entity : world.getEntities())
+        {
+            if (entity instanceof BLACKSMITH || entity instanceof OBSTACLE){
+                continue;
+            }
+            else{
+                NonStatic temp = (NonStatic) entity;
+                temp.scheduleActions(scheduler, world, imageStore);}
+
         }
     }
 

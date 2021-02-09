@@ -5,10 +5,6 @@ import processing.core.PImage;
 
 public interface Entity
 {
-    void scheduleActions(
-            EventScheduler scheduler,
-            WorldModel world,
-            ImageStore imageStore);
 
 
     Point getposition();

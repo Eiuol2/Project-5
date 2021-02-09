@@ -39,10 +39,7 @@ public class OBSTACLE implements Entity  {
     }
 
 
-    @Override
-    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
 
-    }
 
 
 

@@ -109,7 +109,8 @@ public class ORE implements NonStatic  {
                 imageStore.getImageList(BLOB_KEY));
 
         world.addEntity(blob);
-        blob.scheduleActions(scheduler, world, imageStore);
+        NonStatic temp = (NonStatic)blob;
+        temp.scheduleActions(scheduler, world, imageStore);
     }
 
 

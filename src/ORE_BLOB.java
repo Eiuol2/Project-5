@@ -97,7 +97,8 @@ public class ORE_BLOB implements NonStatic  {
 
                 world.addEntity(quake);
                 nextPeriod += this.actionPeriod;
-                quake.scheduleActions(scheduler, world, imageStore);
+                NonStatic temp = (NonStatic) quake;
+                temp.scheduleActions(scheduler, world, imageStore);
             }
         }
 

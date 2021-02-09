@@ -100,7 +100,8 @@ public class VEIN implements NonStatic {
                             ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),
                     imageStore.getImageList(ORE_KEY));
             world.addEntity(ore);
-            ore.scheduleActions(scheduler, world, imageStore);
+            NonStatic temp = (NonStatic) ore;
+            temp.scheduleActions(scheduler, world, imageStore);
         }
 
         scheduler.scheduleEvent(this,

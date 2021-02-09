@@ -4,6 +4,12 @@ public interface NonStatic extends Entity{
 
     int getAnimationPeriod();
 
+    void scheduleActions(
+            EventScheduler scheduler,
+            WorldModel world,
+            ImageStore imageStore);
+
+
     void executeActivity(
             WorldModel world,
             ImageStore imageStore,
