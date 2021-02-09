@@ -57,13 +57,6 @@ public class Activity implements Action{
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
         }
-/*
-                throw new UnsupportedOperationException(String.format(
-                        "executeActivityAction not supported for %s",
-                        this.entity.getClass()));
-        }
-
- */
 
 
     }}
