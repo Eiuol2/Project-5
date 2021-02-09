@@ -63,7 +63,7 @@ public class MINER_FULL implements Entity  {
             EventScheduler scheduler,
             ImageStore imageStore)
     {
-        Entity miner = Functions.createMinerNotFull(this.id, this.resourceLimit,
+        Entity miner = Factory.createMinerNotFull(this.id, this.resourceLimit,
                 this.position, this.actionPeriod,
                 this.animationPeriod,
                 this.images);

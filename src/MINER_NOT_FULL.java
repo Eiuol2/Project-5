@@ -63,7 +63,7 @@ public class MINER_NOT_FULL implements Entity  {
             ImageStore imageStore)
     {
         if (this.resourceCount >= this.resourceLimit) {
-            Entity miner = Functions.createMinerFull(this.id, this.resourceLimit,
+            Entity miner = Factory.createMinerFull(this.id, this.resourceLimit,
                     this.position, this.actionPeriod,
                     this.animationPeriod,
                     this.images);

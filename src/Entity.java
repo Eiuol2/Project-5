@@ -10,9 +10,6 @@ public interface Entity
             WorldModel world,
             ImageStore imageStore);
 
-
-
-
     void executeActivity(
             WorldModel world,
             ImageStore imageStore,

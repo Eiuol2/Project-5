@@ -92,7 +92,7 @@ public class ORE_BLOB implements Entity  {
             Point tgtPos = blobTarget.get().getposition();
 
             if (moveToOreBlob(world, blobTarget.get(), scheduler)) {
-                Entity quake = Functions.createQuake(tgtPos,
+                Entity quake = Factory.createQuake(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
 
                 world.addEntity(quake);

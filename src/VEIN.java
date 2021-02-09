@@ -95,7 +95,7 @@ public class VEIN implements Entity {
         Optional<Point> openPt = world.findOpenAround(this.getposition());
 
         if (openPt.isPresent()) {
-            Entity ore = Functions.createOre(ORE_ID_PREFIX + this.id, openPt.get(),
+            Entity ore = Factory.createOre(ORE_ID_PREFIX + this.id, openPt.get(),
                     ORE_CORRUPT_MIN + Functions.rand.nextInt(
                             ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),
                     imageStore.getImageList(ORE_KEY));

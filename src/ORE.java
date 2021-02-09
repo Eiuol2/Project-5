@@ -101,7 +101,7 @@ public class ORE implements Entity  {
         world.removeEntity(this);
         scheduler.unscheduleAllEvents(this);
 
-        Entity blob = Functions.createOreBlob(this.getid() + BLOB_ID_SUFFIX, pos,
+        Entity blob = Factory.createOreBlob(this.getid() + BLOB_ID_SUFFIX, pos,
                 this.actionPeriod / BLOB_PERIOD_SCALE,
                 BLOB_ANIMATION_MIN + Functions.rand.nextInt(
                         BLOB_ANIMATION_MAX
