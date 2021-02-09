@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class QUAKE implements Entity  {
+public class QUAKE implements NonStatic  {
 
     private final String QUAKE_KEY = "quake";
     private final int QUAKE_ANIMATION_REPEAT_COUNT = 10;

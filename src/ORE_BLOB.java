@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class ORE_BLOB implements Entity  {
+public class ORE_BLOB implements NonStatic  {
 
     private final String QUAKE_KEY = "quake";
 

@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 
 
-public class ORE implements Entity  {
+public class ORE implements NonStatic  {
 
     private final String BLOB_KEY = "blob";
     private final String BLOB_ID_SUFFIX = " -- blob";

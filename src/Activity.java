@@ -1,5 +1,5 @@
 public class Activity implements Action{
-    private final Entity entity;
+    private final NonStatic entity;
     private final WorldModel world;
     private final ImageStore imageStore;
     private final int repeatCount;
@@ -26,7 +26,7 @@ public class Activity implements Action{
     }
 
     public Activity(
-            Entity entity,
+            NonStatic entity,
             WorldModel world,
             ImageStore imageStore,
             int repeatCount)

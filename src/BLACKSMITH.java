@@ -37,16 +37,13 @@ public class BLACKSMITH implements Entity  {
         this.imageIndex = 0;
     }
 
-
-
-    public void nextImage() {
-        this.imageIndex = (this.imageIndex + 1) % this.images.size();
-    }
-
+/*
     public Action createAnimationAction(int repeatCount) {
         return new Animation( this, null, null,
                 repeatCount);
     }
+
+ */
 
 
     @Override
@@ -54,16 +51,7 @@ public class BLACKSMITH implements Entity  {
 
     }
 
-    @Override
-    public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
 
-    }
-
-    public int getAnimationPeriod() {
-                throw new UnsupportedOperationException(
-                        String.format("getAnimationPeriod not supported for %s",
-                                this.getClass()));
-        }
 
     public PImage getCurrentImage() {
         return ((this.images.get(this.imageIndex)));

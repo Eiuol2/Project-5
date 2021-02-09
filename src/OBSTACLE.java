@@ -44,25 +44,15 @@ public class OBSTACLE implements Entity  {
 
     }
 
-    @Override
-    public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
 
-    }
 
-    @Override
-    public int getAnimationPeriod() {
-        return 0;
-    }
-
-    @Override
-    public void nextImage() {
-
-    }
-
+/*
     public Action createAnimationAction(int repeatCount) {
         return new Animation( this, null, null,
                 repeatCount);
     }
+
+ */
 
 
 

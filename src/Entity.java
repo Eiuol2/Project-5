@@ -10,18 +10,6 @@ public interface Entity
             WorldModel world,
             ImageStore imageStore);
 
-    void executeActivity(
-            WorldModel world,
-            ImageStore imageStore,
-            EventScheduler scheduler);
-
-
-    int getAnimationPeriod();
-
-
-    void nextImage();
-
-    Action createAnimationAction(int repeatCount);
 
     Point getposition();
 

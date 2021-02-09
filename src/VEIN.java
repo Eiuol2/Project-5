@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class VEIN implements Entity {
+public class VEIN implements NonStatic {
 
 
     private final String ORE_ID_PREFIX = "ore -- ";
