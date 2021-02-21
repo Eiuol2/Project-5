@@ -28,35 +28,8 @@ public class Activity implements Action{
     }
 
     public void executeAction(EventScheduler scheduler) {
-        if (this.entity instanceof MINER_FULL) {
             entity.executeActivity(this.world,
                     this.imageStore, scheduler);
-        }
-
-        if (this.entity instanceof MINER_NOT_FULL) {
-            entity.executeActivity(this.world,
-                    this.imageStore, scheduler);
-        }
-
-        if (this.entity instanceof ORE) {
-            entity.executeActivity(this.world,
-                    this.imageStore, scheduler);
-        }
-
-        if (this.entity instanceof ORE_BLOB) {
-            entity.executeActivity(this.world,
-                    this.imageStore, scheduler);
-        }
-
-        if (this.entity instanceof QUAKE) {
-            entity.executeActivity(this.world,
-                    this.imageStore, scheduler);
-        }
-
-        if (this.entity instanceof VEIN) {
-            entity.executeActivity(this.world,
-                    this.imageStore, scheduler);
-        }
 
 
     }}

@@ -53,7 +53,7 @@ public final class Factory {
         return new OBSTACLE(id, position, images);
     }
 
-    public static Entity createOre(
+    public static NonStatic createOre(
             String id, Point position, int actionPeriod, List<PImage> images)
     {
 
@@ -78,7 +78,7 @@ public final class Factory {
         return new QUAKE(position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
     }
 
-    public static Entity createVein(
+    public static NonStatic createVein(
             String id, Point position, int actionPeriod, List<PImage> images)
     {
 

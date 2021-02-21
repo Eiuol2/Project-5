@@ -82,13 +82,12 @@ public class VEIN implements NonStatic {
             int ORE_CORRUPT_MIN = 20000;
             int ORE_CORRUPT_MAX = 30000;
             String ORE_KEY = "ore";
-            Entity ore = Factory.createOre(ORE_ID_PREFIX + this.id, openPt.get(),
+            NonStatic ore = Factory.createOre(ORE_ID_PREFIX + this.id, openPt.get(),
                     ORE_CORRUPT_MIN + Functions.rand.nextInt(
                             ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),
                     imageStore.getImageList(ORE_KEY));
             world.addEntity(ore);
-            NonStatic temp = (NonStatic) ore;
-            temp.scheduleActions(scheduler, world, imageStore);
+            ore.scheduleActions(scheduler, world, imageStore);
         }
 
         scheduler.scheduleEvent(this,
