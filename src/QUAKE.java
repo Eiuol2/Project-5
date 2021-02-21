@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class QUAKE implements Animated  {
+public class QUAKE extends Animated {
 
     private  Point position;
     private final List<PImage> images;

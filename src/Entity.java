@@ -1,14 +1,14 @@
 
 import processing.core.PImage;
 
-public interface Entity
+public abstract class Entity
 {
 
-    Point getposition();
+    abstract Point getposition();
 
-    void setPosition(Point p);
+    abstract void setPosition(Point p);
 
-    PImage getCurrentImage();
+    abstract PImage getCurrentImage();
 
 
 }

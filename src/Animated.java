@@ -1,10 +1,10 @@
-public interface Animated extends NonStatic{
+public abstract class Animated extends NonStatic{
 
-    int getAnimationPeriod();
+    abstract int getAnimationPeriod();
 
-    void nextImage();
+    abstract void nextImage();
 
-    Action createAnimationAction(int repeatCount);
+    abstract Action createAnimationAction(int repeatCount);
 
 
 

@@ -1,14 +1,14 @@
-public interface NonStatic extends Entity{
+public abstract class NonStatic extends Entity{
 
 
 
-    void scheduleActions(
+    abstract void scheduleActions(
             EventScheduler scheduler,
             WorldModel world,
             ImageStore imageStore);
 
 
-    void executeActivity(
+    abstract void executeActivity(
             WorldModel world,
             ImageStore imageStore,
             EventScheduler scheduler);

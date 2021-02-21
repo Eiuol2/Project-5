@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class BLACKSMITH implements Entity  {
+public class BLACKSMITH extends Entity {
 
     private  Point position;
     private final List<PImage> images;

@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 
 
-public class ORE implements NonStatic  {
+public class ORE extends NonStatic {
 
 
     private final String id;

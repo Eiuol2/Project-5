@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class OBSTACLE implements Entity  {
+public class OBSTACLE extends Entity {
 
 
     private  Point position;

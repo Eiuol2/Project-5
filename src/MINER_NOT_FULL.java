@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class MINER_NOT_FULL implements Animated  {
+public class MINER_NOT_FULL extends Animated {
 
 
 
