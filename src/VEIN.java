@@ -51,12 +51,6 @@ public class VEIN implements NonStatic {
     }
 
 
-
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null,
-                repeatCount);
-    }
-
     public Action createActivityAction(WorldModel world, ImageStore imageStore)
     {
         return new Activity( this, world, imageStore, 0);
@@ -93,11 +87,6 @@ public class VEIN implements NonStatic {
         scheduler.scheduleEvent(this,
                 this.createActivityAction(world, imageStore),
                 this.getactionPeriod());
-    }
-
-    @Override
-    public int getAnimationPeriod() {
-        return 0;
     }
 
 

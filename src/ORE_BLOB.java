@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class ORE_BLOB implements NonStatic  {
+public class ORE_BLOB implements Animated  {
 
     private  Point position;
     private final List<PImage> images;

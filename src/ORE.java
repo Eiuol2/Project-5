@@ -61,20 +61,11 @@ public class ORE implements NonStatic  {
     }
 
 
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null,
-                repeatCount);
-    }
-
     public Action createActivityAction(WorldModel world, ImageStore imageStore)
     {
         return new Activity( this, world, imageStore, 0);
     }
 
-
-    public int getAnimationPeriod() {
-                return this.animationPeriod;
-    }
 
 
     public void executeActivity(

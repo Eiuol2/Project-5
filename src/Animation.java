@@ -1,5 +1,5 @@
 public class Animation implements Action {
-    private final NonStatic entity;
+    private final Animated entity;
     private final WorldModel world;
     private final int repeatCount;
 
@@ -15,7 +15,7 @@ public class Animation implements Action {
     }
 
     public Animation(
-            NonStatic entity,
+            Animated entity,
             WorldModel world,
             int repeatCount)
     {

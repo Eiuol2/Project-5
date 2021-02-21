@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class MINER_FULL implements NonStatic  {
+public class MINER_FULL implements Animated  {
 
 
 

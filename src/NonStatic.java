@@ -2,8 +2,6 @@ public interface NonStatic extends Entity{
 
     void nextImage();
 
-    int getAnimationPeriod();
-
     void scheduleActions(
             EventScheduler scheduler,
             WorldModel world,
@@ -15,8 +13,6 @@ public interface NonStatic extends Entity{
             ImageStore imageStore,
             EventScheduler scheduler);
 
-
-    Action createAnimationAction(int repeatCount);
 
 
 
