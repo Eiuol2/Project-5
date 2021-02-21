@@ -56,11 +56,6 @@ public class ORE implements NonStatic  {
     }
 
 
-    public void nextImage() {
-        this.imageIndex = (this.imageIndex + 1) % this.images.size();
-    }
-
-
     public Action createActivityAction(WorldModel world, ImageStore imageStore)
     {
         return new Activity( this, world, imageStore, 0);
