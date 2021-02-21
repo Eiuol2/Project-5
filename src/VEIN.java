@@ -47,17 +47,7 @@ public class VEIN extends NonStatic {
     }
 
 
-    public void scheduleActions(
-            EventScheduler scheduler,
-            WorldModel world,
-            ImageStore imageStore){
 
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-
-
-        }
     }
 
 

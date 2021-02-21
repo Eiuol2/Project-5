@@ -31,8 +31,11 @@ public abstract class Animated extends NonStatic {
     }
 
 
+
     public int getAnimationPeriod() {
         return this.animationPeriod;
+
+
 
 
     }

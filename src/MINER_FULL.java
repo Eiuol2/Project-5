@@ -105,21 +105,5 @@ public class MINER_FULL extends Animated {
 
 
 
-
-
-    public void scheduleActions(
-            EventScheduler scheduler,
-            WorldModel world,
-            ImageStore imageStore)
-    {
-
-                scheduler.scheduleEvent(this,
-                        this.createActivityAction(world, imageStore),
-                        this.getactionPeriod());
-                scheduler.scheduleEvent(this,
-                        this.createAnimationAction(0),
-                        this.getAnimationPeriod());
-
-        }
     }
 

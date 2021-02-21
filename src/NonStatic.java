@@ -12,11 +12,21 @@ public abstract class NonStatic extends Entity{
     }
 
 
-    public abstract void scheduleActions(
+    public void scheduleActions(
             EventScheduler scheduler,
             WorldModel world,
-            ImageStore imageStore);
+            ImageStore imageStore) {
 
+        scheduler.scheduleEvent(this,
+                this.createActivityAction(world, imageStore),
+                this.getactionPeriod());
+        if (this instanceof Animated) {
+            scheduler.scheduleEvent(this,
+                    ((Animated) this).createAnimationAction(0),
+                    ((Animated) this).getAnimationPeriod());
+        }
+
+    }
 
     public abstract void executeActivity(
             WorldModel world,

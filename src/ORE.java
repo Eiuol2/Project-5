@@ -46,18 +46,6 @@ public class ORE extends NonStatic {
 
 
 
-    public void scheduleActions(
-            EventScheduler scheduler,
-            WorldModel world,
-            ImageStore imageStore)
-    {
-                scheduler.scheduleEvent(this,
-                        super.createActivityAction(world, imageStore),
-                        super.getactionPeriod());
-
-        }
-
-
 
     }
 
