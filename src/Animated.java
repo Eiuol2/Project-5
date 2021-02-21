@@ -1,11 +1,39 @@
-public abstract class Animated extends NonStatic{
+import processing.core.PImage;
 
-    abstract int getAnimationPeriod();
+import java.util.List;
 
-    abstract void nextImage();
+public abstract class Animated extends NonStatic {
 
-    abstract Action createAnimationAction(int repeatCount);
+    private int resourceLimit;
+    private int resourceCount;
+    private int animationPeriod;
+
+    public Animated(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
+        super(id, position, images, actionPeriod);
+        this.resourceLimit = resourceLimit;
+        this.resourceCount = resourceCount;
+        this.animationPeriod = animationPeriod;
+    }
+    public int getResourceLimit() {return this.resourceLimit;}
+
+    public int getResourceCount() { return this.resourceCount;}
+
+    public void setResourceCount(int nes) {this.resourceCount = nes;}
 
 
+    public void nextImage() {
+        super.setImageIndex(((this.getImageIndex() + 1) % this.getImages().size()));
+    }
 
+    public Action createAnimationAction(int repeatCount) {
+        return new Animation(this, null,
+                repeatCount);
+    }
+
+
+    public int getAnimationPeriod() {
+        return this.animationPeriod;
+
+
+    }
 }

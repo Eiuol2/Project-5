@@ -7,34 +7,6 @@ public class MINER_NOT_FULL extends Animated {
 
 
 
-    private final String id;
-    private  Point position;
-    private final List<PImage> images;
-    private int imageIndex;
-    private final int resourceLimit;
-    private int resourceCount;
-    private final int actionPeriod;
-    private final int animationPeriod;
-
-
-    public void setPosition(Point p)
-    {
-        this.position = p;
-    }
-
-    public Point getposition()
-    {
-        return this.position;
-    }
-
-    public int getactionPeriod()
-    {
-        return this.actionPeriod;
-    }
-
-
-
-
     public MINER_NOT_FULL(
             String id,
             Point position,
@@ -44,14 +16,7 @@ public class MINER_NOT_FULL extends Animated {
             int actionPeriod,
             int animationPeriod)
     {
-        this.id = id;
-        this.position = position;
-        this.images = images;
-        this.imageIndex = 0;
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
-        this.actionPeriod = actionPeriod;
-        this.animationPeriod = animationPeriod;
+        super(id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod);
     }
 
 
@@ -62,11 +27,11 @@ public class MINER_NOT_FULL extends Animated {
             EventScheduler scheduler,
             ImageStore imageStore)
     {
-        if (this.resourceCount >= this.resourceLimit) {
-            NonStatic miner = Factory.createMinerFull(this.id, this.resourceLimit,
-                    this.position, this.actionPeriod,
-                    this.animationPeriod,
-                    this.images);
+        if (this.getResourceCount() >= this.getResourceLimit()) {
+            NonStatic miner = Factory.createMinerFull(this.getId(), this.getResourceLimit(),
+                    this.getposition(), this.getactionPeriod(),
+                    this.getAnimationPeriod(),
+                    this.getImages());
 
             world.removeEntity(entity);
             scheduler.unscheduleAllEvents(entity);
@@ -82,23 +47,19 @@ public class MINER_NOT_FULL extends Animated {
 
     public Point nextPositionMiner(WorldModel world, Point destPos)
     {
-        int horiz = Integer.signum(destPos.x - this.position.x);
-        Point newPos = new Point(this.position.x + horiz, this.position.y);
+        int horiz = Integer.signum(destPos.x - this.getposition().x);
+        Point newPos = new Point(this.getposition().x + horiz, this.getposition().y);
 
         if (horiz == 0 || world.isOccupied(newPos)) {
-            int vert = Integer.signum(destPos.y - this.position.y);
-            newPos = new Point(this.position.x, this.position.y + vert);
+            int vert = Integer.signum(destPos.y - this.getposition().y);
+            newPos = new Point(this.getposition().x, this.getposition().y + vert);
 
             if (vert == 0 || world.isOccupied(newPos)) {
-                newPos = this.position;
+                newPos = this.getposition();
             }
         }
 
         return newPos;
-    }
-
-    public void nextImage() {
-        this.imageIndex = (this.imageIndex + 1) % this.images.size();
     }
 
 
@@ -106,8 +67,8 @@ public class MINER_NOT_FULL extends Animated {
                                  Entity target,
                                  EventScheduler scheduler)
     {
-        if (this.position.adjacent(target.getposition())) {
-            this.resourceCount += 1;
+        if (this.getposition().adjacent(target.getposition())) {
+            this.setResourceCount(this.getResourceCount() + 1);
             world.removeEntity(target);
             scheduler.unscheduleAllEvents(target);
 
@@ -116,7 +77,7 @@ public class MINER_NOT_FULL extends Animated {
         else {
             Point nextPos = this.nextPositionMiner(world, target.getposition());
 
-            if (!this.position.equals(nextPos)) {
+            if (!this.getposition().equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
                 occupant.ifPresent(scheduler::unscheduleAllEvents);
 
@@ -126,22 +87,6 @@ public class MINER_NOT_FULL extends Animated {
         }
     }
 
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null,
-                repeatCount);
-    }
-
-    public Action createActivityAction(WorldModel world, ImageStore imageStore)
-    {
-        return new Activity( this, world, imageStore, 0);
-    }
-
-
-    public int getAnimationPeriod() {
-                return this.animationPeriod;
-    }
-
-
 
     public void executeActivity(
             WorldModel world,
@@ -149,7 +94,7 @@ public class MINER_NOT_FULL extends Animated {
             EventScheduler scheduler)
     {
         Optional<Entity> notFullTarget =
-                world.findNearest(this.position, ORE.class);
+                world.findNearest(this.getposition(), ORE.class);
 
         if (notFullTarget.isEmpty() || !this.moveToNotFull(world,
                 notFullTarget.get(),
@@ -164,11 +109,6 @@ public class MINER_NOT_FULL extends Animated {
 
 
 
-
-
-    public PImage getCurrentImage() {
-        return ((this.images.get(this.imageIndex)));
-    }
 
 
     public void scheduleActions(

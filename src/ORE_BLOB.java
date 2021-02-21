@@ -5,31 +5,6 @@ import java.util.Optional;
 
 public class ORE_BLOB extends Animated {
 
-    private  Point position;
-    private final List<PImage> images;
-    private int imageIndex;
-    private final int actionPeriod;
-    private final int animationPeriod;
-
-
-    public void setPosition(Point p)
-    {
-        this.position = p;
-    }
-
-    public Point getposition()
-    {
-        return this.position;
-    }
-
-    public int getactionPeriod()
-    {
-        return this.actionPeriod;
-    }
-
-
-
-
     public ORE_BLOB(
             String id,
             Point position,
@@ -37,35 +12,9 @@ public class ORE_BLOB extends Animated {
             int actionPeriod,
             int animationPeriod)
     {
-        this.position = position;
-        this.images = images;
-        this.imageIndex = 0;
-        this.actionPeriod = actionPeriod;
-        this.animationPeriod = animationPeriod;
+        super(id, position, images, 0, 0, actionPeriod, animationPeriod);
     }
 
-
-
-
-
-    public void nextImage() {
-        this.imageIndex = (this.imageIndex + 1) % this.images.size();
-    }
-
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null,
-                repeatCount);
-    }
-
-    public Action createActivityAction(WorldModel world, ImageStore imageStore)
-    {
-        return new Activity( this, world, imageStore, 0);
-    }
-
-
-    public int getAnimationPeriod() {
-                return this.animationPeriod;
-        }
 
 
 
@@ -75,8 +24,8 @@ public class ORE_BLOB extends Animated {
             ImageStore imageStore,
             EventScheduler scheduler) {
         Optional<Entity> blobTarget =
-                world.findNearest(this.position, VEIN.class);
-        long nextPeriod = this.actionPeriod;
+                world.findNearest(this.getposition(), VEIN.class);
+        long nextPeriod = this.getactionPeriod();
 
         if (blobTarget.isPresent()) {
             Point tgtPos = blobTarget.get().getposition();
@@ -87,7 +36,7 @@ public class ORE_BLOB extends Animated {
                         imageStore.getImageList(QUAKE_KEY));
 
                 world.addEntity(quake);
-                nextPeriod += this.actionPeriod;
+                nextPeriod += this.getactionPeriod();
                 quake.scheduleActions(scheduler, world, imageStore);
             }
         }
@@ -103,7 +52,7 @@ public class ORE_BLOB extends Animated {
             Entity target,
             EventScheduler scheduler)
     {
-        if (this.position.adjacent(target.getposition())) {
+        if (this.getposition().adjacent(target.getposition())) {
             world.removeEntity(target);
             scheduler.unscheduleAllEvents(target);
             return true;
@@ -111,7 +60,7 @@ public class ORE_BLOB extends Animated {
         else {
             Point nextPos = nextPositionOreBlob(world, target.getposition());
 
-            if (!this.position.equals(nextPos)) {
+            if (!this.getposition().equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
                 occupant.ifPresent(scheduler::unscheduleAllEvents);
 
@@ -124,29 +73,26 @@ public class ORE_BLOB extends Animated {
 
     public Point nextPositionOreBlob(WorldModel world, Point destPos)
     {
-        int horiz = Integer.signum(destPos.x - this.position.x);
-        Point newPos = new Point(this.position.x + horiz, this.position.y);
+        int horiz = Integer.signum(destPos.x - this.getposition().x);
+        Point newPos = new Point(this.getposition().x + horiz, this.getposition().y);
 
         Optional<Entity> occupant = world.getOccupant(newPos);
 
         if (horiz == 0 || (occupant.isPresent() && !(occupant.get().getClass()
                 == ORE.class)))
         {
-            int vert = Integer.signum(destPos.y - this.position.y);
-            newPos = new Point(this.position.x, this.position.y + vert);
+            int vert = Integer.signum(destPos.y - this.getposition().y);
+            newPos = new Point(this.getposition().x, this.getposition().y + vert);
             occupant = world.getOccupant(newPos);
 
             if (vert == 0 || (occupant.isPresent() && !(occupant.get().getClass()
                     == ORE.class)))
             {
-                newPos = this.position;
+                newPos = this.getposition();
             }
         }
 
         return newPos;
-    }
-    public PImage getCurrentImage() {
-        return ((this.images.get(this.imageIndex)));
     }
 
 

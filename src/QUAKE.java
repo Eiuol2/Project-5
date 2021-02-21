@@ -4,64 +4,15 @@ import java.util.List;
 
 public class QUAKE extends Animated {
 
-    private  Point position;
-    private final List<PImage> images;
-    private int imageIndex;
-    private final int actionPeriod;
-    private final int animationPeriod;
 
-
-    public void setPosition(Point p)
-    {
-        this.position = p;
-    }
-
-    public Point getposition()
-    {
-        return this.position;
-    }
-
-
-    public int getactionPeriod()
-    {
-        return this.actionPeriod;
-    }
-
-
-
-
-    public QUAKE(
+    public QUAKE(String id,
             Point position,
             List<PImage> images,
             int actionPeriod,
             int animationPeriod)
     {
-        this.position = position;
-        this.images = images;
-        this.imageIndex = 0;
-        this.actionPeriod = actionPeriod;
-        this.animationPeriod = animationPeriod;
+        super(id, position, images, 0, 0, actionPeriod, animationPeriod);
     }
-
-
-    public void nextImage() {
-        this.imageIndex = (this.imageIndex + 1) % this.images.size();
-    }
-
-    public Action createAnimationAction(int repeatCount) {
-        return new Animation( this, null,
-                repeatCount);
-    }
-
-    public Action createActivityAction(WorldModel world, ImageStore imageStore)
-    {
-        return new Activity( this, world, imageStore, 0);
-    }
-
-
-    public int getAnimationPeriod() {
-                return this.animationPeriod;
-        }
 
 
 
@@ -74,10 +25,6 @@ public class QUAKE extends Animated {
         world.removeEntity(this);
     }
 
-
-    public PImage getCurrentImage() {
-        return ((this.images.get(this.imageIndex)));
-    }
 
 
     public void scheduleActions(

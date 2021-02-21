@@ -5,23 +5,6 @@ import java.util.List;
 public class OBSTACLE extends Entity {
 
 
-    private  Point position;
-    private final List<PImage> images;
-    private final int imageIndex;
-
-
-    public void setPosition(Point p)
-    {
-        this.position = p;
-    }
-
-    public Point getposition()
-    {
-        return this.position;
-    }
-
-
-
 
 
     public OBSTACLE(
@@ -29,20 +12,9 @@ public class OBSTACLE extends Entity {
             Point position,
             List<PImage> images)
     {
-        this.position = position;
-        this.images = images;
-        this.imageIndex = 0;
+        super(id, position, images);
+
     }
-
-
-
-
-
-    public PImage getCurrentImage() {
-        return ((this.images.get(this.imageIndex)));
-    }
-
-
 
 
     }

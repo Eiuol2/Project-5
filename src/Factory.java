@@ -57,7 +57,7 @@ public final class Factory {
             String id, Point position, int actionPeriod, List<PImage> images)
     {
 
-        return new ORE(id, position, images, actionPeriod, 0);
+        return new ORE(id, position, images, actionPeriod);
     }
 
     public static NonStatic createOreBlob(
@@ -75,7 +75,7 @@ public final class Factory {
             Point position, List<PImage> images)
     {
 
-        return new QUAKE(position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
+        return new QUAKE(QUAKE_ID, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
     }
 
     public static NonStatic createVein(
