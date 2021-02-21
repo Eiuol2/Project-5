@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class MINER_NOT_FULL extends Animated {
+public class MINER_NOT_FULL extends Miner {
 
 
 
@@ -45,22 +45,6 @@ public class MINER_NOT_FULL extends Animated {
         return false;
     }
 
-    public Point nextPositionMiner(WorldModel world, Point destPos)
-    {
-        int horiz = Integer.signum(destPos.x - this.getposition().x);
-        Point newPos = new Point(this.getposition().x + horiz, this.getposition().y);
-
-        if (horiz == 0 || world.isOccupied(newPos)) {
-            int vert = Integer.signum(destPos.y - this.getposition().y);
-            newPos = new Point(this.getposition().x, this.getposition().y + vert);
-
-            if (vert == 0 || world.isOccupied(newPos)) {
-                newPos = this.getposition();
-            }
-        }
-
-        return newPos;
-    }
 
 
     public boolean moveToNotFull(WorldModel world,
