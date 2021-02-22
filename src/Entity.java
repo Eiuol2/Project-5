@@ -40,8 +40,6 @@ public abstract class Entity
         return ((this.images.get(this.imageIndex)));
     }
 
-
-
 }
 
 

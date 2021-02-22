@@ -1,34 +1,21 @@
-public class Activity implements Action{
-    private final NonStatic entity;
-    private final WorldModel world;
-    private final ImageStore imageStore;
-    private final int repeatCount;
+import java.awt.*;
+
+public class Activity extends Action{
 
 
-    public Entity getEntity()
-    {
-        return this.entity;
-    }
-
-    public WorldModel getWorld()
-    {
-        return this.world;
-    }
+    private ImageStore imageStore;
 
     public Activity(
             NonStatic entity,
-            WorldModel world,
-            ImageStore imageStore,
+            WorldModel world, ImageStore imageStore,
             int repeatCount)
     {
-        this.entity = entity;
-        this.world = world;
+        super(entity, world, repeatCount);
         this.imageStore = imageStore;
-        this.repeatCount = repeatCount;
     }
 
     public void executeAction(EventScheduler scheduler) {
-            entity.executeActivity(this.world,
+            getEntity().executeActivity(this.getWorld(),
                     this.imageStore, scheduler);
 
 
