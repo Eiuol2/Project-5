@@ -13,6 +13,44 @@ public abstract class Miner extends Animated {
         this.resourceLimit = resourceLimit;
     }
 
+    public boolean transform(//try to refactor this
+                              NonStatic entity,
+                              WorldModel world,
+                              EventScheduler scheduler,
+                              ImageStore imageStore)
+    {
+        if (this.resourceCount >= this.resourceLimit){
+            NonStatic miner = Factory.createMinerFull(this.getId(), this.getResourceLimit(),
+                    this.getposition(), this.getactionPeriod(),
+                    this.getAnimationPeriod(),
+                    this.getImages());
+
+            world.removeEntity(entity);
+            scheduler.unscheduleAllEvents(entity);
+
+            world.addEntity(miner);
+            miner.scheduleActions(scheduler, world, imageStore);
+
+            return true;}
+        else{
+            NonStatic miner = Factory.createMinerNotFull(this.getId(), this.getResourceLimit(),
+                    this.getposition(), this.getactionPeriod(),
+                    this.getAnimationPeriod(),
+                    this.getImages());
+
+            world.removeEntity(entity);
+            scheduler.unscheduleAllEvents(entity);
+
+            world.addEntity(miner);
+            miner.scheduleActions(scheduler, world, imageStore);
+            
+            return false;}
+        
+    }
+
+    protected abstract boolean _minehelper();
+
+
     public Point nextPositionMiner(WorldModel world, Point destPos)
     {
         int horiz = Integer.signum(destPos.x - this.getposition().x);

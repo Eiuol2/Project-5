@@ -21,25 +21,6 @@ public class MINER_FULL extends Miner {
     }
 
 
-    public void transformFull(//try to refactor this
-            NonStatic entity,
-            WorldModel world,
-            EventScheduler scheduler,
-            ImageStore imageStore)
-    {
-        NonStatic miner = Factory.createMinerNotFull(this.getId(), this.getResourceLimit(),
-                this.getposition(), this.getactionPeriod(),
-                this.getAnimationPeriod(),
-                this.getImages());
-
-        world.removeEntity(entity);
-        scheduler.unscheduleAllEvents(entity);
-
-        world.addEntity(miner);
-        miner.scheduleActions(scheduler, world, imageStore);
-    }
-
-
 
 
 
@@ -54,7 +35,7 @@ public class MINER_FULL extends Miner {
         if (fullTarget.isPresent() && moveToFull(world,
                 fullTarget.get(), scheduler))
         {
-            transformFull(this, world, scheduler, imageStore);
+            transform(this, world, scheduler, imageStore);
         }
         else {
             scheduler.scheduleEvent(this,
@@ -88,6 +69,8 @@ public class MINER_FULL extends Miner {
     }
 
 
-
+    public boolean _minehelper() {
+        return false;
     }
+}
 

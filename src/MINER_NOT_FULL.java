@@ -21,28 +21,8 @@ public class MINER_NOT_FULL extends Miner {
 
 
 
-    public boolean transformNotFull(
-            NonStatic entity,
-            WorldModel world,
-            EventScheduler scheduler,
-            ImageStore imageStore)
-    {
-        if (this.getResourceCount() >= this.getResourceLimit()) {
-            NonStatic miner = Factory.createMinerFull(this.getId(), this.getResourceLimit(),
-                    this.getposition(), this.getactionPeriod(),
-                    this.getAnimationPeriod(),
-                    this.getImages());
-
-            world.removeEntity(entity);
-            scheduler.unscheduleAllEvents(entity);
-
-            world.addEntity(miner);
-            miner.scheduleActions(scheduler, world, imageStore);
-
-            return true;
-        }
-
-        return false;
+    public boolean _minehelper(){
+        return (this.getResourceCount() >= this.getResourceLimit());
     }
 
 
@@ -83,7 +63,7 @@ public class MINER_NOT_FULL extends Miner {
         if (notFullTarget.isEmpty() || !this.moveToNotFull(world,
                 notFullTarget.get(),
                 scheduler)
-                || !this.transformNotFull(this, world, scheduler, imageStore))
+                || !this.transform(this, world, scheduler, imageStore))
         {
             scheduler.scheduleEvent(this,
                     this.createActivityAction(world, imageStore),
