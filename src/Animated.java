@@ -2,23 +2,27 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public abstract class Animated extends NonStatic {
+public abstract class Animated extends NonStatic {//smaller than quake miner blob bigger than miners check for common methods
 
-    private int resourceLimit;
-    private int resourceCount;
     private int animationPeriod;
 
-    public Animated(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
+    public Animated(String id, Point position, List<PImage> images,int actionPeriod, int animationPeriod) {
         super(id, position, images, actionPeriod);
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
         this.animationPeriod = animationPeriod;
     }
-    public int getResourceLimit() {return this.resourceLimit;}
 
-    public int getResourceCount() { return this.resourceCount;}
 
-    public void setResourceCount(int nes) {this.resourceCount = nes;}
+    public void scheduleActions(
+            EventScheduler scheduler,
+            WorldModel world,
+            ImageStore imageStore) {
+        scheduler.scheduleEvent(this,
+                this.createActivityAction(world, imageStore),
+                this.getactionPeriod());
+                scheduler.scheduleEvent(this,
+                        this.createAnimationAction(0), //put into animated
+                    this.getAnimationPeriod());}
+
 
 
     public void nextImage() {
@@ -29,8 +33,6 @@ public abstract class Animated extends NonStatic {
         return new Animation(this, null,
                 repeatCount);
     }
-
-
 
     public int getAnimationPeriod() {
         return this.animationPeriod;

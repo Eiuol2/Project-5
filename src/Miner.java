@@ -4,9 +4,13 @@ import java.util.List;
 
 public abstract class Miner extends Animated {
 
+    private int resourceCount;
+    private int resourceLimit;
 
     public Miner(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
-        super(id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod);
+        super(id, position, images, actionPeriod, animationPeriod);
+        this.resourceCount = resourceCount;
+        this.resourceLimit = resourceLimit;
     }
 
     public Point nextPositionMiner(WorldModel world, Point destPos)
@@ -25,6 +29,12 @@ public abstract class Miner extends Animated {
 
         return newPos;
     }
+
+    public int getResourceLimit() {return this.resourceLimit;}
+
+    public int getResourceCount() { return this.resourceCount;}
+
+    public void setResourceCount(int nes) {this.resourceCount = nes;}
 
 
 

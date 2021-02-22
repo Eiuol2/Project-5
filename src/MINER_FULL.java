@@ -21,7 +21,7 @@ public class MINER_FULL extends Miner {
     }
 
 
-    public void transformFull(
+    public void transformFull(//try to refactor this
             NonStatic entity,
             WorldModel world,
             EventScheduler scheduler,
@@ -66,7 +66,7 @@ public class MINER_FULL extends Miner {
 
 
 
-    public boolean moveToFull(
+    public boolean moveToFull(//try to refactor this
             WorldModel world,
             Entity target,
             EventScheduler scheduler)

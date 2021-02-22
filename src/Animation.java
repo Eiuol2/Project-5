@@ -10,7 +10,6 @@ public class Animation extends Action {
     }
 
 
-
     public void executeAction(EventScheduler scheduler)
     {
         Animated temp = (Animated) this.getEntity();

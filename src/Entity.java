@@ -32,7 +32,7 @@ public abstract class Entity
 
     public String getId() {return this.id;}
 
-    public int getImageIndex() {return this.imageIndex;}
+    public int getImageIndex() {return this.imageIndex;}//remove
 
     public void setImageIndex(int aimg) {this.imageIndex = aimg;}
 

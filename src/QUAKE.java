@@ -11,7 +11,7 @@ public class QUAKE extends Animated {
             int actionPeriod,
             int animationPeriod)
     {
-        super(id, position, images, 0, 0, actionPeriod, animationPeriod);
+        super(id, position, images, actionPeriod, animationPeriod);
     }
 
 
