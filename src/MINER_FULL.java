@@ -32,7 +32,7 @@ public class MINER_FULL extends Miner {
         Optional<Entity> fullTarget =
                 world.findNearest(this.getposition(), BLACKSMITH.class);
 
-        if (fullTarget.isPresent() && moveToFull(world,
+        if (fullTarget.isPresent() && this.move(world,
                 fullTarget.get(), scheduler))
         {
             this.transform(this, world, scheduler, imageStore);
@@ -47,26 +47,6 @@ public class MINER_FULL extends Miner {
 
 
 
-    public boolean moveToFull(//try to refactor this
-            WorldModel world,
-            Entity target,
-            EventScheduler scheduler)
-    {
-        if (this.getposition().adjacent(target.getposition())) {
-            return true;
-        }
-        else {
-            Point nextPos = this.nextPositionMiner(world, target.getposition());
-
-            if (!this.getposition().equals(nextPos)) {
-                Optional<Entity> occupant = world.getOccupant(nextPos);
-                occupant.ifPresent(scheduler::unscheduleAllEvents);
-
-                world.moveEntity(this, nextPos);
-            }
-            return false;
-        }
-    }
 
 
 }
