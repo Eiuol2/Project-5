@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public abstract class Animated extends NonStatic {//smaller than quake miner blob bigger than miners check for common methods
+public abstract class Animated extends NonStatic {
 
     private int animationPeriod;
 
