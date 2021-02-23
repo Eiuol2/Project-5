@@ -14,7 +14,7 @@ public abstract class Miner extends Animated {
         this.resourceLimit = resourceLimit;
     }
 
-    public boolean transform(//try to refactor this
+    public boolean transform(
                              NonStatic entity,
                              WorldModel world,
                              EventScheduler scheduler,
@@ -94,19 +94,6 @@ public abstract class Miner extends Animated {
 
             return newPos;
         }
-
-        public int getResourceLimit () {
-            return this.resourceLimit;
-        }
-
-        public int getResourceCount () {
-            return this.resourceCount;
-        }
-
-        public void setResourceCount ( int nes){
-            this.resourceCount += nes;
-        }
-
 
     }
 
