@@ -56,12 +56,13 @@ public abstract class Miner extends Animated {
                         EventScheduler scheduler) {
 
         if (this.getposition().adjacent(target.getposition())) {
-                this.resourceCount += 1;
                 if (target instanceof BLACKSMITH) { return true;}
+                this.resourceCount += 1;
                 world.removeEntity(target);
                 scheduler.unscheduleAllEvents(target);
 
                 return true;
+
         }
         else {
             Point nextPos = this.nextPositionMiner(world, target.getposition());
