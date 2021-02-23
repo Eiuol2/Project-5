@@ -21,10 +21,6 @@ public class MINER_NOT_FULL extends Miner {
 
 
 
-    public boolean _minehelper(){
-        return (this.getResourceCount() >= this.getResourceLimit());
-    }
-
 
 
     public boolean moveToNotFull(WorldModel world,

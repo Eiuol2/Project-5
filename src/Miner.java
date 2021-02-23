@@ -48,8 +48,6 @@ public abstract class Miner extends Animated {
 
     }
 
-    protected abstract boolean _minehelper();
-
 
     public Point nextPositionMiner(WorldModel world, Point destPos)
     {

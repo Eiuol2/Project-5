@@ -69,8 +69,5 @@ public class MINER_FULL extends Miner {
     }
 
 
-    public boolean _minehelper() {
-        return false;
-    }
 }
 
