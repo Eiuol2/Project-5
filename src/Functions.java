@@ -137,7 +137,7 @@ public final class Functions
             NonStatic entity = Factory.createMinerNotFull(properties[MINER_ID],
                                                Integer.parseInt(
                                                        properties[MINER_LIMIT]),
-                                               pt, Integer.parseInt(
+                                               0,pt, Integer.parseInt(
                             properties[MINER_ACTION_PERIOD]), Integer.parseInt(
                             properties[MINER_ANIMATION_PERIOD]),
                                                imageStore.getImageList(

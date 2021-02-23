@@ -19,33 +19,33 @@ public abstract class Miner extends Animated {
                               EventScheduler scheduler,
                               ImageStore imageStore)
     {
-        if (this.resourceCount >= this.resourceLimit){
-            NonStatic miner = Factory.createMinerFull(this.getId(), this.getResourceLimit(),
+        if (this.resourceCount >= 2){
+            NonStatic miner = Factory.createMinerFull(this.getId(), this.resourceLimit,
                     this.getposition(), this.getactionPeriod(),
                     this.getAnimationPeriod(),
                     this.getImages());
 
-            world.removeEntity(entity);
-            scheduler.unscheduleAllEvents(entity);
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
 
             world.addEntity(miner);
             miner.scheduleActions(scheduler, world, imageStore);
 
             return true;}
-        else{
-            NonStatic miner = Factory.createMinerNotFull(this.getId(), this.getResourceLimit(),
+        else {
+            NonStatic miner = Factory.createMinerNotFull(this.getId(), this.resourceLimit, this.resourceCount,
                     this.getposition(), this.getactionPeriod(),
                     this.getAnimationPeriod(),
                     this.getImages());
 
-            world.removeEntity(entity);
-            scheduler.unscheduleAllEvents(entity);
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
 
             world.addEntity(miner);
             miner.scheduleActions(scheduler, world, imageStore);
-            
+
             return false;}
-        
+
     }
 
     protected abstract boolean _minehelper();
@@ -72,7 +72,7 @@ public abstract class Miner extends Animated {
 
     public int getResourceCount() { return this.resourceCount;}
 
-    public void setResourceCount(int nes) {this.resourceCount = nes;}
+    public void setResourceCount(int nes) {this.resourceCount += nes;}
 
 
 

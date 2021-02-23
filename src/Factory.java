@@ -36,13 +36,14 @@ public final class Factory {
     public static NonStatic createMinerNotFull(
             String id,
             int resourceLimit,
+            int resourceCount,
             Point position,
             int actionPeriod,
             int animationPeriod,
             List<PImage> images)
     {
 
-        return new MINER_NOT_FULL(id, position, images, resourceLimit, 0, actionPeriod, animationPeriod);
+        return new MINER_NOT_FULL(id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod);
     }
 
 

@@ -35,7 +35,7 @@ public class MINER_FULL extends Miner {
         if (fullTarget.isPresent() && moveToFull(world,
                 fullTarget.get(), scheduler))
         {
-            transform(this, world, scheduler, imageStore);
+            this.transform(this, world, scheduler, imageStore);
         }
         else {
             scheduler.scheduleEvent(this,

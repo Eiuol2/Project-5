@@ -32,7 +32,7 @@ public class MINER_NOT_FULL extends Miner {
                                  EventScheduler scheduler)
     {
         if (this.getposition().adjacent(target.getposition())) {
-            this.setResourceCount(this.getResourceCount() + 1);
+            this.setResourceCount(1);
             world.removeEntity(target);
             scheduler.unscheduleAllEvents(target);
 
