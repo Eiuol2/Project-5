@@ -7,6 +7,8 @@ public abstract class Miner extends Animated {
 
     private int resourceCount;
     private int resourceLimit;
+ //   private PathingStrategy strategy = new SingleStepPathingStrategy();
+    private PathingStrategy strategy = new AStarPathingStrategy();
 
     public Miner(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
         super(id, position, images, actionPeriod, animationPeriod);
@@ -65,7 +67,20 @@ public abstract class Miner extends Animated {
 
         }
         else {
-            Point nextPos = this.nextPositionMiner(world, target.getposition());
+
+            List<Point> possible = this.strategy.computePath(this.getposition(), target.getposition(),
+                    p -> world.withinBounds(p) && !(world.isOccupied(p)),
+                    Point::adjacent,
+                    PathingStrategy.CARDINAL_NEIGHBORS);
+
+
+            Point nextPos;
+            if (possible.size() == 0){
+                nextPos = this.getposition();}
+            else{
+                nextPos = possible.get(0);}
+
+
 
             if (!this.getposition().equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
@@ -77,7 +92,7 @@ public abstract class Miner extends Animated {
         }
     }
 
-
+/*
         public Point nextPositionMiner (WorldModel world, Point destPos)
         {
             int horiz = Integer.signum(destPos.x - this.getposition().x);
@@ -94,6 +109,8 @@ public abstract class Miner extends Animated {
 
             return newPos;
         }
+
+ */
 
     }
 

@@ -5,6 +5,9 @@ import java.util.Optional;
 
 public class ORE_BLOB extends Animated {
 
+
+//    private PathingStrategy strategy = new SingleStepPathingStrategy();
+    private PathingStrategy strategy = new AStarPathingStrategy();
     public ORE_BLOB(
             String id,
             Point position,
@@ -56,7 +59,20 @@ public class ORE_BLOB extends Animated {
             return true;
         }
         else {
-            Point nextPos = nextPositionOreBlob(world, target.getposition());
+
+
+            List<Point> possible = strategy.computePath(this.getposition(), target.getposition(),
+                    p -> world.withinBounds(p) && !(world.getOccupant(p).isPresent() && !(world.getOccupant(p).get().getClass()
+                            == ORE.class)),
+                    Point::adjacent,
+                    PathingStrategy.CARDINAL_NEIGHBORS);
+
+
+            Point nextPos;
+            if (possible.size() == 0){
+                nextPos = this.getposition();}
+            else{
+                nextPos = possible.get(0);}
 
             if (!this.getposition().equals(nextPos)) {
                 Optional<Entity> occupant = world.getOccupant(nextPos);
@@ -68,7 +84,7 @@ public class ORE_BLOB extends Animated {
         }
     }
 
-
+/*
     public Point nextPositionOreBlob(WorldModel world, Point destPos)
     {
         int horiz = Integer.signum(destPos.x - this.getposition().x);
@@ -92,6 +108,8 @@ public class ORE_BLOB extends Animated {
 
         return newPos;
     }
+
+ */
 
 
 

@@ -1,6 +1,10 @@
 public final class Point {
     public final int x;
     public final int y;
+    public int g = 0;
+    public int h = 0;
+    public int f = 0;
+    public Point prev;
 
     public Point(int x, int y) {
         this.x = x;
