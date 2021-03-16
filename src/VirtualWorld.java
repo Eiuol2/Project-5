@@ -119,13 +119,12 @@ public final class VirtualWorld extends PApplet
     public void mousePressed()
     {
         Point pressed = mouseToPoint(mouseX, mouseY);
-        Entity entity = Factory.createVein((String)VEIN_ID, pressed,
-                VEIN_ACTION_PERIOD,
+        Entity entity = Factory.createVein("vein_33_11", pressed,
+                10278,
                 imageStore.getImageList(VEIN_KEY));
 
         if (!world.isOccupied(pressed) && world.withinBounds(pressed))
-            parseVein;
-
+            world.tryAddEntity(entity);
         redraw();
 
     }
