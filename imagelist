@@ -1,28 +1,28 @@
 blacksmith images/center.bmp 255 255 255 0
-blob images/blob1.bmp 255 255 255 0
-blob images/blob2.bmp 255 255 255 0
-blob images/blob3.bmp 255 255 255 0
-blob images/blob4.bmp 255 255 255 0
-blob images/blob5.bmp 255 255 255 0
-blob images/blob6.bmp 255 255 255 0
-blob images/blob7.bmp 255 255 255 0
-blob images/blob8.bmp 255 255 255 0
-blob images/blob9.bmp 255 255 255 0
-blob images/blob10.bmp 255 255 255 0
-blob images/blob11.bmp 255 255 255 0
-blob images/blob12.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
+blob images/villain.bmp 255 255 255 0
 miner images/trainer123.bmp 252 252 252 0
 miner images/trainer123.bmp 252 252 252 0
 miner images/trainer123.bmp 252 252 252 0
 miner images/trainer123.bmp 252 252 252 0
 miner images/trainer123.bmp 252 252 252 0
-quake images/quake1.bmp 255 255 255 0
-quake images/quake2.bmp 255 255 255 0
-quake images/quake3.bmp 255 255 255 0
-quake images/quake4.bmp 255 255 255 0
-quake images/quake5.bmp 255 255 255 0
-quake images/quake6.bmp 255 255 255 0
-ore images/ore.bmp 201 26 26 0
+quake images/fire1.bmp 255 255 255 0
+quake images/fire2.bmp 255 255 255 0
+quake images/fire3.bmp 255 255 255 0
+quake images/fire4.bmp 255 255 255 0
+quake images/fire5.bmp 255 255 255 0
+quake images/fire6.bmp 255 255 255 0
+ore images/pichu.bmp 201 26 26 0
 obstacle images/water.bmp
 grass images/grass2.bmp
 rocks images/rock.bmp
