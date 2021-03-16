@@ -180,7 +180,7 @@ background grass 0 2
 background grass 1 2
 background grass 2 2
 background grass 3 2
-background grass 4 2
+tree grass 4 2
 background grass 5 2
 background dirt 6 2
 background dirt 7 2
@@ -323,7 +323,7 @@ background grass 23 5
 background grass 24 5
 background grass 25 5
 background grass 26 5
-background grass 27 5
+tree grass 27 5
 background grass 28 5
 background grass 29 5
 background grass 30 5
@@ -336,7 +336,7 @@ background grass 36 5
 background grass 37 5
 background grass 38 5
 background grass 39 5
-background grass 0 6
+tree grass 0 6
 background dirt 1 6
 background grass 2 6
 background grass 3 6
@@ -352,7 +352,7 @@ background grass 12 6
 background grass 13 6
 background grass 14 6
 background grass 15 6
-background grass 16 6
+tree grass 16 6
 background grass 17 6
 background grass 18 6
 background grass 19 6
@@ -365,7 +365,7 @@ background grass 25 6
 background grass 26 6
 background grass 27 6
 background grass 28 6
-background grass 29 6
+tree grass 29 6
 background grass 30 6
 background grass 31 6
 background grass 32 6
@@ -488,7 +488,7 @@ background grass 28 9
 background grass 29 9
 background grass 30 9
 background grass 31 9
-background grass 32 9
+tree grass 32 9
 background grass 33 9
 background grass 34 9
 background grass 35 9
@@ -658,7 +658,7 @@ background grass 38 13
 background dirt 39 13
 background grass 0 14
 background grass 1 14
-background grass 2 14
+tree grass 2 14
 background grass 3 14
 background grass 4 14
 background grass 5 14
@@ -844,7 +844,7 @@ background grass 24 18
 background grass 25 18
 background grass 26 18
 background grass 27 18
-background grass 28 18
+tree tree 28 18
 background grass 29 18
 background grass 30 18
 background grass 31 18
@@ -887,7 +887,7 @@ background grass 27 19
 background grass 28 19
 background grass 29 19
 background grass 30 19
-background grass 31 19
+tree grass 31 19
 background grass 32 19
 background grass 33 19
 background grass 34 19
@@ -909,7 +909,7 @@ background grass 9 20
 background grass 10 20
 background grass 11 20
 background grass 12 20
-background grass 13 20
+tree grass 13 20
 background grass 14 20
 background grass 15 20
 background grass 16 20
@@ -963,7 +963,7 @@ background grass 23 21
 background grass 24 21
 background grass 25 21
 background grass 26 21
-background grass 27 21
+tree grass 27 21
 background grass 28 21
 background grass 29 21
 background grass 30 21
@@ -1013,8 +1013,8 @@ background grass 33 22
 background grass 34 22
 background grass 35 22
 background grass 36 22
-background grass 37 22
-background grass 38 22
+tree grass 37 22
+tree grass 38 22
 background grass 39 22
 background grass 0 23
 background grass 1 23
@@ -1041,7 +1041,7 @@ background grass 21 23
 background grass 22 23
 background grass 23 23
 background grass 24 23
-background grass 25 23
+tree grass 25 23
 background grass 26 23
 background grass 27 23
 background grass 28 23

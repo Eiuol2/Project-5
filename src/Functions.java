@@ -34,6 +34,8 @@ public final class Functions
     public static final int OBSTACLE_COL = 2;
     public static final int OBSTACLE_ROW = 3;
 
+
+
     public static final String ORE_KEY = "ore";
     public static final int ORE_NUM_PROPERTIES = 5;
     public static final int ORE_ID = 1;
@@ -113,6 +115,9 @@ public final class Functions
                     return parseSmith(properties, world, imageStore);
                 case VEIN_KEY:
                     return parseVein(properties, world, imageStore);
+                case "tree":
+                    return parseTree(properties, world, imageStore);
+
             }
         }
 
@@ -162,6 +167,21 @@ public final class Functions
             Entity entity = Factory.createObstacle(properties[OBSTACLE_ID], pt,
                                            imageStore.getImageList(
                                                         OBSTACLE_KEY));
+            world.tryAddEntity(entity);
+        }
+
+        return properties.length == OBSTACLE_NUM_PROPERTIES;
+    }
+
+    public static boolean parseTree(
+            String[] properties, WorldModel world, ImageStore imageStore)
+    {
+        if (properties.length == OBSTACLE_NUM_PROPERTIES) {
+            Point pt = new Point(Integer.parseInt(properties[OBSTACLE_COL]),
+                    Integer.parseInt(properties[OBSTACLE_ROW]));
+            Entity entity = Factory.createObstacle(properties[OBSTACLE_ID], pt,
+                    imageStore.getImageList(
+                            "tree"));
             world.tryAddEntity(entity);
         }
 

@@ -40,3 +40,4 @@ rocks images/rock.bmp
 dirt images/sand.bmp
 vein images/bush.bmp
 background_default images/none.bmp
+tree images/tree.bmp
