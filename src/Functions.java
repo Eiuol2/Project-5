@@ -54,6 +54,8 @@ public final class Functions
     public static final int VEIN_ROW = 3;
     public static final int VEIN_ACTION_PERIOD = 4;
 
+    public static final String TRAINER_KEY = "Trainer";
+
 
     public static void setAlpha(PImage img, int maskColor, int alpha) {
         int alphaValue = alpha << 24;
