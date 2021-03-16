@@ -12,6 +12,7 @@ public final class VirtualWorld extends PApplet
     private final int VIEW_HEIGHT = 480;
     private final int TILE_WIDTH = 32;
     private final int TILE_HEIGHT = 32;
+    private static final int TILE_SIZE = 32;
     private final int WORLD_WIDTH_SCALE = 2;
     private final int WORLD_HEIGHT_SCALE = 2;
 
@@ -32,6 +33,13 @@ public final class VirtualWorld extends PApplet
     private static final double FAST_SCALE = 0.5;
     private static final double FASTER_SCALE = 0.25;
     private static final double FASTEST_SCALE = 0.10;
+
+    public static final String VEIN_KEY = "vein";
+    public static final int VEIN_NUM_PROPERTIES = 5;
+    public static final int VEIN_ID = 1;
+    public static final int VEIN_COL = 2;
+    public static final int VEIN_ROW = 3;
+    public static final int VEIN_ACTION_PERIOD = 4;
 
     public static double timeScale = 1.0;
 
@@ -101,6 +109,25 @@ public final class VirtualWorld extends PApplet
             }
             view.shiftView(dx, dy);
         }
+    }
+
+    private Point mouseToPoint(int x, int y)
+    {
+        return new Point(mouseX/TILE_SIZE, mouseY/TILE_SIZE);
+    }
+
+    public void mousePressed()
+    {
+        Point pressed = mouseToPoint(mouseX, mouseY);
+        Entity entity = Factory.createVein((String)VEIN_ID, pressed,
+                VEIN_ACTION_PERIOD,
+                imageStore.getImageList(VEIN_KEY));
+
+        if (!world.isOccupied(pressed) && world.withinBounds(pressed))
+            parseVein;
+
+        redraw();
+
     }
 
     public static Background createDefaultBackground(ImageStore imageStore) {
