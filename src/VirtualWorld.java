@@ -41,6 +41,13 @@ public final class VirtualWorld extends PApplet
     public static final int VEIN_ROW = 3;
     public static final int VEIN_ACTION_PERIOD = 4;
 
+    String BLOB_KEY = "blob";
+    String BLOB_ID_SUFFIX = " -- blob";
+    int BLOB_PERIOD_SCALE = 4;
+    int BLOB_ANIMATION_MIN = 50;
+    int BLOB_ANIMATION_MAX = 150;
+
+
     public static double timeScale = 1.0;
 
     private ImageStore imageStore;
@@ -121,12 +128,16 @@ public final class VirtualWorld extends PApplet
         Point pressed = mouseToPoint(mouseX, mouseY);
         pressed = view.getViewport().viewportToWorld(pressed.x, pressed.y);
 
-        Entity entity = Factory.createVein("vein_33_11", pressed,
-                10278,
-                imageStore.getImageList(VEIN_KEY));
+        NonStatic blob = Factory.createPikachu(BLOB_ID_SUFFIX, pressed,
+                BLOB_PERIOD_SCALE,
+                BLOB_ANIMATION_MIN + Functions.rand.nextInt(
+                        BLOB_ANIMATION_MAX
+                                - BLOB_ANIMATION_MIN),
+                imageStore.getImageList("pikachu"));
 
         if (!world.isOccupied(pressed) && world.withinBounds(pressed))
-            world.tryAddEntity(entity);
+            world.tryAddEntity(blob);
+        blob.scheduleActions(scheduler, world, imageStore);
         redraw();
 
     }

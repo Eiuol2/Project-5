@@ -11,6 +11,7 @@ blob images/villain.bmp 255 255 255 0
 blob images/villain.bmp 255 255 255 0
 blob images/villain.bmp 255 255 255 0
 blob images/villain.bmp 255 255 255 0
+pikachu images/pikachu.bmp 255 255 255 0
 miner images/trainer123.bmp 252 252 252 0
 miner images/trainer123.bmp 252 252 252 0
 miner images/trainer123.bmp 252 252 252 0
@@ -22,6 +23,11 @@ quake images/fire3.bmp 255 255 255 0
 quake images/fire4.bmp 255 255 255 0
 quake images/fire5.bmp 255 255 255 0
 quake images/fire6.bmp 255 255 255 0
+bolt images/bolt1.bmp 255 255 255 0
+bolt images/bolt2.bmp 255 255 255 0
+bolt images/bolt3.bmp 255 255 255 0
+bolt images/bolt4.bmp 255 255 255 0
+bolt images/bolt5.bmp 255 255 255 0
 ore images/pichu.bmp 201 26 26 0
 obstacle images/water.bmp
 grass images/grass2.bmp

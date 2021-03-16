@@ -32,7 +32,7 @@ public class PIKACHU extends Animated {
             Point tgtPos = blobTarget.get().getposition();
 
             if (moveToOreBlob(world, blobTarget.get(), scheduler)) {
-                String QUAKE_KEY = "quake";
+                String QUAKE_KEY = "bolt";
                 NonStatic quake = Factory.createQuake(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
 
