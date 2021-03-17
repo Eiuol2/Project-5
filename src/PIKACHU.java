@@ -42,6 +42,7 @@ public class PIKACHU extends Animated {
 
 
             if (moveBack(world, blobTarget.get(), scheduler, imageStore)) {
+                /*
                 String QUAKE_KEY = "bolt";
                 NonStatic thunder = Factory.createThunder(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
@@ -49,6 +50,9 @@ public class PIKACHU extends Animated {
                 world.addEntity(thunder);
                 nextPeriod += this.getactionPeriod();
                 thunder.scheduleActions(scheduler, world, imageStore);
+
+                 */
+
 
 
             }

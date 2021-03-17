@@ -42,6 +42,12 @@ public class burnt extends Animated {
 
             if (moveBack(world, blobTarget.get(), scheduler, imageStore)) {
 
+                world.removeEntity(blobTarget.get());
+
+                world.setBackground(tgtPos, new Background("dirty", imageStore.getImageList("dirty")));
+                world.setOccupancyCell(tgtPos, new tree("tree", tgtPos, imageStore.getImageList("tree")));
+
+
             }
         }
 
