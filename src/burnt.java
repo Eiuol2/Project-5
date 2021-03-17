@@ -41,15 +41,6 @@ public class burnt extends Animated {
             Point tgtPos = blobTarget.get().getposition();
 
             if (moveBack(world, blobTarget.get(), scheduler, imageStore)) {
-                String QUAKE_KEY = "quake";
-                NonStatic quake = Factory.createQuake(this.getposition(),
-                        imageStore.getImageList(QUAKE_KEY));
-
-                world.addEntity(quake);
-                nextPeriod += this.getactionPeriod();
-                quake.scheduleActions(scheduler, world, imageStore);
-
-
 
             }
         }
@@ -103,6 +94,7 @@ public class burnt extends Animated {
     {
         if (this.getposition().adjacent(target.getposition())) {
             Point prev = this.getposition();
+
             world.removeEntity(this);
             scheduler.unscheduleAllEvents(this);
 
