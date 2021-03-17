@@ -1,3 +1,4 @@
+import com.sun.source.tree.Tree;
 import processing.core.PImage;
 
 import java.util.List;
@@ -46,6 +47,12 @@ public final class Factory {
             String id, Point position, List<PImage> images) {
 
         return new OBSTACLE(id, position, images);
+    }
+
+    public static Entity createTree(
+            String id, Point position, List<PImage> images) {
+
+        return new tree(id, position, images);
     }
 
     public static NonStatic createOre(

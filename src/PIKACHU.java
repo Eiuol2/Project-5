@@ -51,12 +51,12 @@ public class PIKACHU extends Animated {
                 thunder.scheduleActions(scheduler, world, imageStore);
 
 
-                NonStatic burnt = Factory.createPikachu(BLOB_ID_SUFFIX, this.getposition(),
-                        BLOB_PERIOD_SCALE,
+                NonStatic burnt = Factory.createBurnt(BLOB_ID_SUFFIX, this.getposition(),
+                        4000,
                         BLOB_ANIMATION_MIN + Functions.rand.nextInt(
                                 BLOB_ANIMATION_MAX
                                         - BLOB_ANIMATION_MIN),
-                        imageStore.getImageList("pikachu"));
+                        imageStore.getImageList("burnt"), true);
 
 
 

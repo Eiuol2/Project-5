@@ -221,7 +221,7 @@ public final class VirtualWorld extends PApplet
     {
         for (Entity entity : world.getEntities())
         {
-            if (entity instanceof BLACKSMITH || entity instanceof OBSTACLE){
+            if (entity instanceof BLACKSMITH || entity instanceof OBSTACLE || entity instanceof tree){
                 continue;
             }
             else{

@@ -179,7 +179,7 @@ public final class Functions
         if (properties.length == OBSTACLE_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[OBSTACLE_COL]),
                     Integer.parseInt(properties[OBSTACLE_ROW]));
-            Entity entity = Factory.createObstacle(properties[OBSTACLE_ID], pt,
+            Entity entity = Factory.createTree(properties[OBSTACLE_ID], pt,
                     imageStore.getImageList(
                             "tree"));
             world.tryAddEntity(entity);
