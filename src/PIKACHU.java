@@ -15,6 +15,8 @@ public class PIKACHU extends Animated {
 
 
     private static final boolean burned = false;
+    private boolean willBurn = false;
+    private int willBurnCount = 0;
     //    private PathingStrategy strategy = new SingleStepPathingStrategy();
     private PathingStrategy strategy = new AStarPathingStrategy();
     public PIKACHU(
@@ -27,7 +29,13 @@ public class PIKACHU extends Animated {
         super(id, position, images, actionPeriod, animationPeriod, burned);
     }
 
+    public void setWillBurn(boolean b){
+        willBurn = b;
+    }
 
+    public void addWillBurnCount(){
+        willBurnCount++;
+    }
 
     public void executeActivity(
             WorldModel world,
@@ -113,7 +121,7 @@ public class PIKACHU extends Animated {
             Entity target,
             EventScheduler scheduler, ImageStore imageStore)
     {
-        if (this.getposition().adjacent(target.getposition())) {
+        if (this.getposition().adjacent(target.getposition()) || willBurn) {
             Point prev = target.getposition();
             world.removeEntity(target);
             scheduler.unscheduleAllEvents(target);
@@ -127,6 +135,14 @@ public class PIKACHU extends Animated {
 
             world.addEntity(blob);
             blob.scheduleActions(scheduler, world, imageStore);
+
+            if (willBurnCount > 0) {
+                willBurnCount--;
+                if (willBurnCount == 0){
+                    willBurn = false;
+                }
+            }
+
 
             return true;
         }
