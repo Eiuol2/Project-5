@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 import processing.core.*;
 
@@ -135,9 +138,40 @@ public final class VirtualWorld extends PApplet
                                 - BLOB_ANIMATION_MIN),
                 imageStore.getImageList("pikachu"));
 
-        if (!world.isOccupied(pressed) && world.withinBounds(pressed))
+
+
+        if (!world.isOccupied(pressed) && world.withinBounds(pressed)) {
             world.tryAddEntity(blob);
-        blob.scheduleActions(scheduler, world, imageStore);
+            blob.scheduleActions(scheduler, world, imageStore);
+
+            List<Point> bolts = new ArrayList<>();
+            int createFlash = 0, attempts = 0;
+            Random rand = new Random();
+
+            while (createFlash < 9 && attempts < 14){
+
+                int offsetx = rand.nextInt(6)-3;
+                int offsety = rand.nextInt(6)-3;
+                Point flash = new Point(pressed.x + offsetx, pressed.y + offsety);
+                String id = "bolt";
+
+                if (!world.isOccupied(flash) && world.withinBounds(flash)) {
+                    world.setBackgroundCell(flash, new Background(id, imageStore.getImageList(id)));
+                    bolts.add(flash);
+                    createFlash++;
+                } /*else if (world.isOccupied(flash) && world.getOccupancyCell(flash).getClass() == ORE_BLOB.class){
+                    String QUAKE_KEY = "bolt";
+                    NonStatic quake = Factory.createQuake(flash,
+                            imageStore.getImageList(QUAKE_KEY));
+                    world.removeEntityAt(flash);
+                    world.addEntity(quake);
+                    quake.scheduleActions(scheduler, world, imageStore);
+
+                }*/
+                attempts++;
+            }
+        }
+
         redraw();
 
     }
