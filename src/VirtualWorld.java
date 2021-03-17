@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -153,10 +155,12 @@ public final class VirtualWorld extends PApplet
                 int offsetx = rand.nextInt(6)-3;
                 int offsety = rand.nextInt(6)-3;
                 Point flash = new Point(pressed.x + offsetx, pressed.y + offsety);
-                String id = "bolt";
+                String id = "grass2";
 
                 if (!world.isOccupied(flash) && world.withinBounds(flash)) {
-                    world.setBackgroundCell(flash, new Background(id, imageStore.getImageList(id)));
+
+
+                    world.setBackground(flash, new Background(id, imageStore.getImageList(id)));
                     bolts.add(flash);
                     createFlash++;
                 } /*else if (world.isOccupied(flash) && world.getOccupancyCell(flash).getClass() == ORE_BLOB.class){
