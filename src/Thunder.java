@@ -2,12 +2,21 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class QUAKE extends Animated {
+public class Thunder extends Animated {
+
+
+
+
+    String BLOB_KEY = "blob";
+    String BLOB_ID_SUFFIX = " -- blob";
+    int BLOB_PERIOD_SCALE = 4;
+    int BLOB_ANIMATION_MIN = 50;
+    int BLOB_ANIMATION_MAX = 150;
 
 
     private static final boolean burned = false;
 
-    public QUAKE(String id,
+    public Thunder(String id,
                  Point position,
                  List<PImage> images,
                  int actionPeriod,
@@ -23,12 +32,18 @@ public class QUAKE extends Animated {
             ImageStore imageStore,
             EventScheduler scheduler)
     {
+
+
         scheduler.unscheduleAllEvents(this);
         world.removeEntity(this);
+
+
+
+
     }
 
 
 
-    }
+}
 
 

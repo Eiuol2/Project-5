@@ -6,7 +6,9 @@ public abstract class Animated extends NonStatic {
 
     private int animationPeriod;
 
-    public Animated(String id, Point position, List<PImage> images,int actionPeriod, int animationPeriod) {
+
+
+    public Animated(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod, boolean burned) {
         super(id, position, images, actionPeriod);
         this.animationPeriod = animationPeriod;
     }
@@ -41,4 +43,7 @@ public abstract class Animated extends NonStatic {
 
 
     }
+
+
+
 }

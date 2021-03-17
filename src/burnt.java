@@ -3,15 +3,13 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class ORE_BLOB extends Animated {
+public class burnt extends Animated {
 
+    private static boolean burned = true;
 
-
-
-    private static boolean burned = false;
     //    private PathingStrategy strategy = new SingleStepPathingStrategy();
     private PathingStrategy strategy = new AStarPathingStrategy();
-    public ORE_BLOB(
+    public burnt(
             String id,
             Point position,
             List<PImage> images,
@@ -19,9 +17,7 @@ public class ORE_BLOB extends Animated {
             int animationPeriod)
     {
         super(id, position, images, actionPeriod, animationPeriod, burned);
-
     }
-
 
 
 
@@ -30,7 +26,7 @@ public class ORE_BLOB extends Animated {
             ImageStore imageStore,
             EventScheduler scheduler) {
         Optional<Entity> blobTarget =
-                world.findNearest(this.getposition(), VEIN.class);
+                world.findNearest(this.getposition(), OBSTACLE.class);
         long nextPeriod = this.getactionPeriod();
 
         if (blobTarget.isPresent()) {
@@ -90,55 +86,7 @@ public class ORE_BLOB extends Animated {
     }
 
 
-/*
-    public boolean transform(Entity entity1,
-                             Point entity,
-                             WorldModel world,
-                             EventScheduler scheduler,
-                             ImageStore imageStore,
-                             boolean burned) {
-        world.removeEntity(entity1);
-        if (burned) {
-
-            NonStatic burnt = Factory.createPikachu(BLOB_ID_SUFFIX, entity,
-                    BLOB_PERIOD_SCALE,
-                    BLOB_ANIMATION_MIN + Functions.rand.nextInt(
-                            BLOB_ANIMATION_MAX
-                                    - BLOB_ANIMATION_MIN),
-                    imageStore.getImageList("pikachu"));
 
 
-     //       scheduler.unscheduleAllEvents(entity1);
-
-
-            world.addEntity(burnt);
-            burnt.scheduleActions(scheduler, world, imageStore);
-            System.out.println("hi");
-
-            return true;
-        } else {
-
-            System.out.println("hello");
-            NonStatic notburnt = Factory.createOreBlob(this.getId() + BLOB_ID_SUFFIX, this.getposition(),
-                    this.getactionPeriod() / BLOB_PERIOD_SCALE,
-                    BLOB_ANIMATION_MIN + Functions.rand.nextInt(
-                            BLOB_ANIMATION_MAX
-                                    - BLOB_ANIMATION_MIN),
-                    imageStore.getImageList(BLOB_KEY), true);
-
-            world.removeEntity(this);
-            scheduler.unscheduleAllEvents(this);
-
-            world.addEntity(notburnt);
-            notburnt.scheduleActions(scheduler, world, imageStore);
-
-            return false;
-        }
-
-    }
-
-
-
-*/
 
 }

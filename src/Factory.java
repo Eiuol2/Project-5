@@ -54,12 +54,24 @@ public final class Factory {
         return new ORE(id, position, images, actionPeriod);
     }
 
+    public static NonStatic createBurnt(
+            String id,
+            Point position,
+            int actionPeriod,
+            int animationPeriod,
+            List<PImage> images,
+            boolean burned) {
+
+        return new burnt(id, position, images, actionPeriod, animationPeriod);
+    }
+
     public static NonStatic createOreBlob(
             String id,
             Point position,
             int actionPeriod,
             int animationPeriod,
-            List<PImage> images) {
+            List<PImage> images,
+            boolean burned) {
 
         return new ORE_BLOB(id, position, images, actionPeriod, animationPeriod);
     }
@@ -69,6 +81,15 @@ public final class Factory {
 
         return new QUAKE(QUAKE_ID, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
     }
+
+    public static NonStatic createThunder(
+            Point position, List<PImage> images) {
+
+        return new Thunder(QUAKE_ID, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
+    }
+
+
+
 
     public static NonStatic createVein(
             String id, Point position, int actionPeriod, List<PImage> images) {

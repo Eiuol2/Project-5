@@ -32,7 +32,8 @@ bolt images/bolt1.bmp 255 255 255 0
 bolt images/bolt2.bmp 255 255 255 0
 bolt images/bolt3.bmp 255 255 255 0
 bolt images/bolt4.bmp 255 255 255 0
-bolt images/bolt5.bmp 255 255 255 0
+bolt images/grass2.bmp 255 255 255 0
+bolt images/grass2.bmp 255 255 255 0
 ore images/pichu.bmp 201 26 26 0
 obstacle images/water.bmp
 grass images/grass2.bmp
