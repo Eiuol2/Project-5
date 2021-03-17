@@ -106,7 +106,7 @@ public class burnt extends Animated {
             world.removeEntity(this);
             scheduler.unscheduleAllEvents(this);
 
-            NonStatic blob = Factory.createOreBlob(this.getId() + BLOB_ID_SUFFIX, prev,
+            NonStatic blob = Factory.createOreBlob(BLOB_ID_SUFFIX, prev,
                     4000,
                     BLOB_ANIMATION_MIN + Functions.rand.nextInt(
                             BLOB_ANIMATION_MAX

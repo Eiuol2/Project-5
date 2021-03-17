@@ -41,7 +41,7 @@ public class PIKACHU extends Animated {
             Point tgtPos = blobTarget.get().getposition();
 
 
-            if (moveToOreBlob(world, blobTarget.get(), scheduler)) {
+            if (moveBack(world, blobTarget.get(), scheduler, imageStore)) {
                 String QUAKE_KEY = "bolt";
                 NonStatic thunder = Factory.createThunder(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
@@ -49,21 +49,6 @@ public class PIKACHU extends Animated {
                 world.addEntity(thunder);
                 nextPeriod += this.getactionPeriod();
                 thunder.scheduleActions(scheduler, world, imageStore);
-
-
-                NonStatic burnt = Factory.createBurnt(BLOB_ID_SUFFIX, this.getposition(),
-                        4000,
-                        BLOB_ANIMATION_MIN + Functions.rand.nextInt(
-                                BLOB_ANIMATION_MAX
-                                        - BLOB_ANIMATION_MIN),
-                        imageStore.getImageList("burnt"), true);
-
-
-
-                world.addEntity(burnt);
-                burnt.scheduleActions(scheduler, world, imageStore);
-                System.out.println("hi");
-
 
 
             }
@@ -117,32 +102,56 @@ public class PIKACHU extends Animated {
         }
     }
 
-/*
-    public Point nextPositionOreBlob(WorldModel world, Point destPos)
+
+
+    public boolean moveBack(
+            WorldModel world,
+            Entity target,
+            EventScheduler scheduler, ImageStore imageStore)
     {
-        int horiz = Integer.signum(destPos.x - this.getposition().x);
-        Point newPos = new Point(this.getposition().x + horiz, this.getposition().y);
+        if (this.getposition().adjacent(target.getposition())) {
+            Point prev = target.getposition();
+            world.removeEntity(target);
+            scheduler.unscheduleAllEvents(target);
 
-        Optional<Entity> occupant = world.getOccupant(newPos);
+            NonStatic blob = Factory.createBurnt(this.getId() + BLOB_ID_SUFFIX, prev,
+                    4000,
+                    BLOB_ANIMATION_MIN + Functions.rand.nextInt(
+                            BLOB_ANIMATION_MAX
+                                    - BLOB_ANIMATION_MIN),
+                    imageStore.getImageList("burnt"), false);
 
-        if (horiz == 0 || (occupant.isPresent() && !(occupant.get().getClass()
-                == ORE.class)))
-        {
-            int vert = Integer.signum(destPos.y - this.getposition().y);
-            newPos = new Point(this.getposition().x, this.getposition().y + vert);
-            occupant = world.getOccupant(newPos);
+            world.addEntity(blob);
+            blob.scheduleActions(scheduler, world, imageStore);
 
-            if (vert == 0 || (occupant.isPresent() && !(occupant.get().getClass()
-                    == ORE.class)))
-            {
-                newPos = this.getposition();
-            }
+            return true;
         }
+        else {
 
-        return newPos;
+
+            List<Point> possible = strategy.computePath(this.getposition(), target.getposition(),
+                    p -> world.withinBounds(p) && !(world.getOccupant(p).isPresent() && !(world.getOccupant(p).get().getClass()
+                            == ORE.class)),
+                    Point::adjacent,
+                    PathingStrategy.CARDINAL_NEIGHBORS);
+
+
+            Point nextPos;
+            if (possible.size() == 0){
+                nextPos = this.getposition();}
+            else{
+                nextPos = possible.get(0);}
+
+            if (!this.getposition().equals(nextPos)) {
+                Optional<Entity> occupant = world.getOccupant(nextPos);
+                occupant.ifPresent(scheduler::unscheduleAllEvents);
+
+                world.moveEntity(this, nextPos);
+            }
+            return false;
+        }
     }
 
- */
 
 
 
