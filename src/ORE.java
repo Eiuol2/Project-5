@@ -38,7 +38,7 @@ public class ORE extends NonStatic {
                 BLOB_ANIMATION_MIN + Functions.rand.nextInt(
                         BLOB_ANIMATION_MAX
                                 - BLOB_ANIMATION_MIN),
-                imageStore.getImageList(BLOB_KEY));
+                imageStore.getImageList(BLOB_KEY), false);
 
         world.addEntity(blob);
         blob.scheduleActions(scheduler, world, imageStore);

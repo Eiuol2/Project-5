@@ -5,13 +5,14 @@ import java.util.Optional;
 
 public abstract class Miner extends Animated {
 
+    private static final boolean burned = false;
     private int resourceCount;
     private int resourceLimit;
  //   private PathingStrategy strategy = new SingleStepPathingStrategy();
     private PathingStrategy strategy = new AStarPathingStrategy();
 
     public Miner(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
-        super(id, position, images, actionPeriod, animationPeriod);
+        super(id, position, images, actionPeriod, animationPeriod, burned);
         this.resourceCount = resourceCount;
         this.resourceLimit = resourceLimit;
     }

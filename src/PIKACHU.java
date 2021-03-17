@@ -6,6 +6,8 @@ import java.util.Optional;
 public class PIKACHU extends Animated {
 
 
+
+    private static final boolean burned = false;
     //    private PathingStrategy strategy = new SingleStepPathingStrategy();
     private PathingStrategy strategy = new AStarPathingStrategy();
     public PIKACHU(
@@ -15,7 +17,7 @@ public class PIKACHU extends Animated {
             int actionPeriod,
             int animationPeriod)
     {
-        super(id, position, images, actionPeriod, animationPeriod);
+        super(id, position, images, actionPeriod, animationPeriod, burned);
     }
 
 
@@ -31,15 +33,20 @@ public class PIKACHU extends Animated {
         if (blobTarget.isPresent()) {
             Point tgtPos = blobTarget.get().getposition();
 
+
             if (moveToOreBlob(world, blobTarget.get(), scheduler)) {
                 String QUAKE_KEY = "bolt";
-                NonStatic quake = Factory.createQuake(tgtPos,
+                NonStatic thunder = Factory.createThunder(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
 
-                world.addEntity(quake);
+                world.addEntity(thunder);
                 nextPeriod += this.getactionPeriod();
-                quake.scheduleActions(scheduler, world, imageStore);
+                thunder.scheduleActions(scheduler, world, imageStore);
+
+
             }
+
+
         }
 
         scheduler.scheduleEvent(this,
