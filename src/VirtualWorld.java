@@ -132,7 +132,7 @@ public final class VirtualWorld extends PApplet
         pressed = view.getViewport().viewportToWorld(pressed.x, pressed.y);
 
         NonStatic blob = Factory.createPikachu(BLOB_ID_SUFFIX, pressed,
-                BLOB_PERIOD_SCALE,
+                3000,
                 BLOB_ANIMATION_MIN + Functions.rand.nextInt(
                         BLOB_ANIMATION_MAX
                                 - BLOB_ANIMATION_MIN),
