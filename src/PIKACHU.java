@@ -6,6 +6,13 @@ import java.util.Optional;
 public class PIKACHU extends Animated {
 
 
+    String BLOB_KEY = "blob";
+    String BLOB_ID_SUFFIX = " -- blob";
+    int BLOB_PERIOD_SCALE = 4;
+    int BLOB_ANIMATION_MIN = 50;
+    int BLOB_ANIMATION_MAX = 150;
+
+
 
     private static final boolean burned = false;
     //    private PathingStrategy strategy = new SingleStepPathingStrategy();
@@ -44,6 +51,21 @@ public class PIKACHU extends Animated {
                 thunder.scheduleActions(scheduler, world, imageStore);
 
 
+                NonStatic burnt = Factory.createPikachu(BLOB_ID_SUFFIX, this.getposition(),
+                        BLOB_PERIOD_SCALE,
+                        BLOB_ANIMATION_MIN + Functions.rand.nextInt(
+                                BLOB_ANIMATION_MAX
+                                        - BLOB_ANIMATION_MIN),
+                        imageStore.getImageList("pikachu"));
+
+
+
+                world.addEntity(burnt);
+                burnt.scheduleActions(scheduler, world, imageStore);
+                System.out.println("hi");
+
+
+
             }
 
 
@@ -63,6 +85,10 @@ public class PIKACHU extends Animated {
         if (this.getposition().adjacent(target.getposition())) {
             world.removeEntity(target);
             scheduler.unscheduleAllEvents(target);
+
+
+
+
             return true;
         }
         else {

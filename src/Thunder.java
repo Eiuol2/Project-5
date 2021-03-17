@@ -7,13 +7,6 @@ public class Thunder extends Animated {
 
 
 
-    String BLOB_KEY = "blob";
-    String BLOB_ID_SUFFIX = " -- blob";
-    int BLOB_PERIOD_SCALE = 4;
-    int BLOB_ANIMATION_MIN = 50;
-    int BLOB_ANIMATION_MAX = 150;
-
-
     private static final boolean burned = false;
 
     public Thunder(String id,
