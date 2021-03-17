@@ -160,11 +160,11 @@ public final class VirtualWorld extends PApplet
                 if (!bolts.contains(flash)) {
                     if (!world.isOccupied(flash) && world.withinBounds(flash)) {
 
-
                         world.setBackground(flash, new Background(id, imageStore.getImageList(id)));
                         bolts.add(flash);
                         createFlash++;
                     } else if (world.isOccupied(flash) && world.getOccupancyCell(flash).getClass() == ORE_BLOB.class) {
+                        world.setBackground(flash, new Background(id, imageStore.getImageList(id)));
                         PIKACHU p = (PIKACHU) blob;
                         p.setWillBurn(true);
                         p.addWillBurnCount();
