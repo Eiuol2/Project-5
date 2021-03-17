@@ -155,7 +155,7 @@ public final class VirtualWorld extends PApplet
                 int offsetx = rand.nextInt(6)-3;
                 int offsety = rand.nextInt(6)-3;
                 Point flash = new Point(pressed.x + offsetx, pressed.y + offsety);
-                String id = "grass2";
+                String id = "scorched";
 
                 if (!world.isOccupied(flash) && world.withinBounds(flash)) {
 
