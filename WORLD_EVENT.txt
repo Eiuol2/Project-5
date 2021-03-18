@@ -1,0 +1,67 @@
+
+
+How to trigger event:
+
+Click anywhere on the screen thats not an obstacle, blacksmith, or tree.
+
+What should happen:
+
+-A Pikachu should spawn (cool huh?)
+
+-Pikachu's powerful aura scorches the ground he is near in any direction (2 tile radius)
+
+-If a poor team rocket member happens to be in the affected vicinity they will be electrocuted as well! >:)
+
+
+
+What the affected entities should do:
+
+-The electrocuted team rocket members will then seek water to cool and clean their burns, causing the water to become dirty and change color.
+
+-After they clean themselves they will revert back and continue to hunt down and capture pichus
+
+
+What the new entity is and behavior:
+
+-The new entity is Pikachu, the iconic pokemon hero that always thwarts team rocket!!!
+
+-Pikachu will relentlessly hunt down any nearby team rocket member and use Thunderbolt to electrocute them once they are within range
+
+
+Partner Work Allocation:
+
+Brandon:
+
+-Implemented scorched proximity tiles on mouse pressed
+-Implemented "shock" (change to burned state) of villain if within proximity tile
+-Trainer animation
+-Implemented entity spawn on click
+-Maintained entity spawn on click consistant with viewport position
+-Implemented/fixed interactions of mouse pressed with surrounding entities
+-General bug fixes
+
+Louie:
+
+-Implemented Team Rocket entity class
+-Implemented Pikachu entity class
+-Implemented Burned Team rocket entity class
+-Changed bmp for:
+    -Blacksmith
+    -OBSTACLE
+    -Blob
+    -Background grass
+    -ore
+    -vein
+    -quake (now a fire animation)
+-Added bmp/animations for:
+    -burnt villain
+    -unburnt villain
+    -pikachu
+-Added tree entity (Acts like an obstacle)
+-Implemented/fixed interactions between implemented entities
+-General bug fixes
+
+
+However, we split the work 50/50 and helped each other out with certain problems/methods.
+
+

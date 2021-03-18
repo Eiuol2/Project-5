@@ -149,13 +149,16 @@ public final class VirtualWorld extends PApplet
             List<Point> bolts = new ArrayList<>();
             int createFlash = 0, attempts = 0;
             Random rand = new Random();
+            String id = "scorched";
 
-            while (createFlash < 25 && attempts < 25){
+            world.setBackground(pressed, new Background(id, imageStore.getImageList(id)));
 
-                int offsetx = rand.nextInt(4)-2;
-                int offsety = rand.nextInt(4)-2;
+            while (createFlash < 10 && attempts < 25){
+
+                int offsetx = rand.nextInt(5)-2;
+                int offsety = rand.nextInt(5)-2;
                 Point flash = new Point(pressed.x + offsetx, pressed.y + offsety);
-                String id = "scorched";
+
 
                 if (!bolts.contains(flash)) {
                     if (!world.isOccupied(flash) && world.withinBounds(flash)) {
@@ -169,7 +172,6 @@ public final class VirtualWorld extends PApplet
                         p.setWillBurn(true);
                         p.addWillBurnCount();
                         bolts.add(flash);
-                        System.out.println("burned");
                     }
                 }
                 attempts++;
